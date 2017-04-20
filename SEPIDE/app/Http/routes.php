@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('/principal', function () {
     return view('posgrado.welcome');
 });
+
+Route::get('/agregar', function () {
+    return view('posgrado.agregar_proyecto');
+});
