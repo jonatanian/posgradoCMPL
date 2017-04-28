@@ -16,9 +16,29 @@ Route::get('/', function () {
 });
 
 Route::get('/principal', function () {
-    return view('posgrado.welcome');
+    return view('posgrado.principal');
 });
 
-Route::get('/agregar', function () {
+Route::get('/proyectos', function () {
+    return view('posgrado.proyectos');
+});
+
+Route::get('/publicaciones', function () {
+    return view('posgrado.publicaciones');
+});
+
+Route::get('/congresos', function () {
+    return view('posgrado.congresos');
+});
+
+Route::get('/agregar_proyecto', function () {
     return view('posgrado.agregar_proyecto');
+});
+
+Route::get('/agregar_publicacion', function () {
+    return view('posgrado.agregar_publicacion');
+});
+
+Route::get('/agregar_congreso', function () {
+    return view('posgrado.agregar_congreso');
 });

@@ -13,7 +13,7 @@
   <!-- Font CSS (Via CDN) -->
   <link rel="stylesheet" type="text/css" href="{{ URL::asset("http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700") }}">
   <!-- Theme CSS -->
-  <link rel="stylesheet" type="text/css" href="{{ URL::asset("assets/skin/default_skin/css/theme.css") }}">
+  <link rel="stylesheet" type="text/css" href="{{ URL::asset("assets/skin/sepidi-skin/css/theme.css") }}">
 
   <!-- Admin Forms CSS -->
   <link rel="stylesheet" type="text/css" href="{{ URL::asset("assets/admin-tools/admin-forms/css/admin-forms.css") }}">
@@ -37,7 +37,7 @@
     <header class="navbar navbar-fixed-top bg-primary">
       <div class="navbar-branding">
         <a class="navbar-brand" href="#">
-          <img height="60" alt="SISA CMPL" src="{{url('/')}}/site/logo/logo.png">
+          <img height="60" alt="SEPIDI CMPL" src="{{url('/')}}/site/logo/logo.png">
         </a>
         <span class="ad ad-lines" id="toggle_sidemenu_l"></span>
       </div>
@@ -104,32 +104,25 @@
         <!-- Start: Sidebar Menu -->
         <nav class="widget-body" role="navigation">
             <ul class="nav sidebar-menu acc-menu">
-              <li class="sidebar-label pt20">Menú</li>
-              <li>
-                <a href="http://148.204.90.214/SISACMPL/SIG">
-                  <span class="glyphicon glyphicon-book"></span>
-                  <span class="sidebar-title">Página principal</span>
-                </a>
-              </li>
 
               <!-- sidebar resources -->
               <li class="sidebar-label pt15"></li>
               <li class="active">
-                <a href="">
+                <a href="{{url('/principal')}}">
                   <span class="glyphicon glyphicon-globe"></span>
                   <span class="sidebar-title">Inicio</span>
                 </a>
               </li>
 
               <li>
-                <a href="" target="_blank">
+                <a href="{{url('/proyectos')}}">
                   <span class="glyphicon glyphicon-folder-close"></span>
                   <span class="sidebar-title">Proyectos de I+D+i</span>
                 </a>
               </li>
 
               <li>
-                <a href="">
+                <a href="{{url('/publicaciones')}}">
                   <span class="glyphicon glyphicon-calendar"></span>
                   <span class="sidebar-title">Publicaciones</span>
                 </a>
@@ -137,7 +130,7 @@
 
 
              <li>
-                <a href="">
+                <a href="{{url('/congresos')}}">
                   <span class="glyphicon glyphicon-blackboard"></span>
                   <span class="sidebar-title">Congresos</span>
                 </a>
@@ -216,19 +209,19 @@
                       <div class="col-xs-4 col-sm-2">
               <a class="metro-tile bg-warning light" href="http://148.204.90.214/SISACMPL/SIG/RD">
                 <span class="fa fa-gears text-muted"></span>
-                <span class="metro-title">Configuración de SIG</span>
+                <span class="metro-title">Configuración de SEPIDI</span>
               </a>
             </div>
             <div class="col-xs-4 col-sm-2">
               <a class="metro-tile bg-warning light" href="http://148.204.90.214/SISACMPL/SIG/RD/Organigrama">
                 <span class="fa fa-sitemap text-muted"></span>
-                <span class="metro-title">Editar organigramas</span>
+                <span class="metro-title">Administrar usuarios</span>
               </a>
             </div>
                     <div class="col-xs-4 col-sm-2">
             <a class="metro-tile bg-warning light" href="http://148.204.90.214/SISACMPL/SIG/crearAvisos">
               <span class="glyphicon glyphicon-bullhorn text-muted"></span>
-              <span class="metro-title">Avisos</span>
+              <span class="metro-title">Otro</span>
             </a>
           </div>
         </div>
@@ -242,7 +235,7 @@
       <footer class="affix" id="content-footer">
         <div class="row">
           <div class="col-md-6">
-            <span class="footer-legal">© 2017 SEPIDE CMPL-IPN</span>
+            <span class="footer-legal">© 2017 SEPIDI CMPL-IPN</span>
           </div>
         </div>
       </footer>
@@ -270,7 +263,7 @@
 
   <script type="text/javascript">
   jQuery(document).ready(function() {
-
+    $('.datepicker').datepicker();
     "use strict";
 
     // Init Theme Core
