@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -62,12 +63,12 @@
         <li class="dropdown menu-merge">
           <a class="dropdown-toggle fw600 p15" href="#" data-toggle="dropdown">
           	<img class="mw30 br64" alt="avatar" src="http://148.204.90.214/SISACMPL/images/placeholder.png">
-          	<span class="hidden-xs pl15">Jonatan Ian Castañeda Chavero</span>
+          	<span class="hidden-xs pl15">{{auth()->user()->name}}</span>
             <span class="caret caret-tp hidden-xs"></span>
           </a>
           <ul class="dropdown-menu list-group dropdown-persist w250" role="menu">
             <li class="dropdown-footer">
-              <a href="http://148.204.90.214/SISACMPL/salir">
+              <a href="{{ url('/logout') }}">
               <span class="fa fa-power-off pr5"></span> Cerrar sesión </a>
             </li>
           </ul>
@@ -95,7 +96,7 @@
                 <div class="media-links">
                    <p class="sidebar-menu-toggle">Bienvenido</p>
                 </div>
-                <div class="media-author">Dr./Mtro. &nbsp; Jonatan Ian Castañeda Chavero</div>
+                <div class="media-author">{{auth()->user()->name}}</div>
               </div>
             </div>
           </div>
@@ -111,6 +112,13 @@
                 <a href="{{url('/principal')}}">
                   <span class="glyphicon glyphicon-globe"></span>
                   <span class="sidebar-title">Inicio</span>
+                </a>
+              </li>
+
+              <li class="active">
+                <a href="{{url('/perfil')}}">
+                  <span class="glyphicon glyphicon-user"></span>
+                  <span class="sidebar-title">Perfil</span>
                 </a>
               </li>
 
@@ -260,6 +268,9 @@
   <script type="text/javascript" src="{{URL::asset('assets/js/utility/utility.js')}}"></script>
   <script type="text/javascript" src="{{URL::asset('assets/js/demo/demo.js')}}"></script>
   <script type="text/javascript" src="{{URL::asset('assets/js/main.js')}}"></script>
+
+<!-- Validaciones de la vista -->
+  <script type="text/javascript" src="{{URL::asset('site/js/main.js')}}"></script>
 
   <script type="text/javascript">
   jQuery(document).ready(function() {

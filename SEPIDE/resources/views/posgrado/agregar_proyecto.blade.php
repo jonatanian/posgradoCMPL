@@ -18,11 +18,13 @@
                      <label for="inputEmail" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Financiamiento:</label>
                      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
                          <select class="form-control">
-                              <option value="volvo">Multidiciplinario</option>
-                              <option value="saab">CONACYT</option>
-                              <option value="mercedes">CDMX</option>
-                              <option value="audi">SIP</option>
-                              <option value="audi">Otro...</option>
+                              <option value"" disabled>-- Externo --</option>
+                              <option value="1">CONACYT</option>
+                              <option value="2">CDMX</option>
+                              <option value="" disabled>-- Interno --</option>
+                              <option value="3">Multidiciplinario</option>
+                              <option value="4">SIP</option>
+                              <option value="otro">Otro...</option>
                         </select>
                      </div>
                  </div>
@@ -30,7 +32,7 @@
                 <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                      <label for="otro" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Otro:</label>
                      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                         <input type="text" class="form-control" placeholder="Financiamiento">
+                         <input type="text" class="form-control" placeholder="Otro">
                      </div>
                  </div>
 
@@ -44,35 +46,44 @@
                 <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                      <label for="estatus" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Estatus:</label>
                      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                         <select class="form-control">
-                              <option value="volvo">Presentado</option>
-                              <option value="saab">Aprobado</option>
-                              <option value="mercedes">No aprobado</option>
+                         <select id="elem_estatus" class="form-control">
+                              <option value="">&nbsp;</option>
+                              <option value="presentado">Presentado</option>
+                              <option value="aprobado">Aprobado</option>
+                              <option value="naprobado">No aprobado</option>
                         </select>
                      </div>
                  </div>
-                 
-                 <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                     <label for="fechaEstatus" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha de estatus:</label>
-                     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                         <input type="date" class="form-control datepicker" placeholder="Fecha de estatus">
-                     </div>
-                 </div>
-                 <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                     <label for="vigencia" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Vigencia del proyecto (inicio):</label>
-                     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                         <input type="date" class="fecha form-control datepicker disabled" placeholder="Inicio">
-                     </div>
-                  
-                 </div>
+                 <div id="div_estatus_presentado" class="hidden">
+                    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                         <label for="fechaPresentacion" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha de presentación:</label>
+                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                             <input type="date" class="form-control datepicker" placeholder="Fecha de presentacion">
+                         </div>
+                     </div>
+                     <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                         <label for="fechaVencimiento" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha de vencimiento:</label>
+                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                             <input type="date" class="form-control datepicker" placeholder="Fecha de vencimiento">
+                         </div>
+                     </div>
+                </div>
+                <div id="div_estatus_aprobado" class="hidden">
+                    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                         <label for="fechaInicio" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha de inicio:</label>
+                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                             <input type="date" class="form-control datepicker" placeholder="Fecha de inicio">
+                         </div>
+                     </div>
 
-                <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                     <label for="vigencia" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Vigencia del proyecto (término):</label>
-                     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                         <input type="date" class="fecha form-control datepicker disabled" placeholder="Término">
-                     </div>
-                  
-                 </div>
+                    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                         <label for="fechaTermino" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha de término:</label>
+                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                             <input type="date" class="form-control datepicker" placeholder="Fecha de Término">
+                         </div>
+                     </div>
+                </div>
+
 
                 <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                      <label for="inputName" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Monto financiado:</label>

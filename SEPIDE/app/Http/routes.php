@@ -11,13 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', ['middleware' => 'auth', function () {
+    return redirect()->action('HomeController@index');
+}]);
 
-Route::get('/principal', function () {
-    return view('posgrado.principal');
-});
+Route::get('/principal', 'HomeController@principal');
+
+Route::get('/perfil', 'HomeController@perfil');
+
+
+Route::get('/set_perfil', 'HomeController@set_perfil');
+Route::post('/set_perfil', 'HomeController@update_perfil');
+
 
 Route::get('/proyectos', function () {
     return view('posgrado.proyectos');
@@ -42,3 +47,15 @@ Route::get('/agregar_publicacion', function () {
 Route::get('/agregar_congreso', function () {
     return view('posgrado.agregar_congreso');
 });
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
+
+/*
+*
+*   Rutas de administrador
+*
+*/
+Route::get('/admin', 'AdminController@usuarios');
+Route::get('/admin/activar/{id}', 'AdminController@activarUsuario');
+Route::get('/admin/desactivar/{id}', 'AdminController@desactivarUsuario');

@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('sqlsrv', 'sqlsrv'),
 
     /*
     |--------------------------------------------------------------------------
@@ -45,6 +45,15 @@ return [
     */
 
     'connections' => [
+
+        'sqlsrv' => [
+            'driver' => 'sqlsrv',
+            'host' => 'localhost', // Provide IP address here
+            'database' => 'SEPIDI',
+            'username' => 'SEPIDI',
+            'password' => 'sepidi2017',
+            'prefix' => '',
+        ],
 
         'sqlite' => [
             'driver' => 'sqlite',
@@ -77,6 +86,7 @@ return [
             'prefix' => '',
             'schema' => 'public',
         ],
+
 
     ],
 
