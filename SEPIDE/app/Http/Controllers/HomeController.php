@@ -21,6 +21,16 @@ class HomeController extends Controller
     }
 
     /**
+     * Create a new controller instance.
+     *
+     * @return str
+     */
+     public function getUser(){
+        $investigador = new Investigador;
+        return $investigador->getUser();
+     }
+
+    /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
@@ -28,9 +38,9 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        if($user->rol_id == 1)
-            return redirect('/admin');
-        else if($user->is_active){
+        //if($user->rol_id == 1)
+        //    return redirect('/admin');
+        if($user->is_active){
             if($user->is_set){
                 return redirect('/principal');
             }
@@ -46,7 +56,7 @@ class HomeController extends Controller
     }
 
     public function principal(){
-        return view('posgrado.principal');
+        return view('posgrado.principal',array('investigador'=>$this->getUser()));
     }
 
     public function set_perfil(){
@@ -64,7 +74,8 @@ class HomeController extends Controller
         $investigador->save();
 
         $user = Users::find($us->id);
-        $user->rol_id = 2;
+        if($user->rol_id == NULL)
+            $user->rol_id = 2;
         $user->is_set = 1;
         $user->save();
 
@@ -72,8 +83,7 @@ class HomeController extends Controller
     }
 
     public function perfil(){
-        $user = Auth::user();
-        $investigador = Investigador::where('user_id',$user->id)->first();
-        return view('posgrado.perfil', array('investigador'=>$investigador));
+        
+        return view('posgrado.perfil', array('investigador'=>$this->getUser()));
     }
 }

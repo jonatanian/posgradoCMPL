@@ -96,7 +96,7 @@
                 <div class="media-links">
                    <p class="sidebar-menu-toggle">Bienvenido</p>
                 </div>
-                <div class="media-author">{{auth()->user()->name}}</div>
+                <div class="media-author">{{$investigador['grado']}} {{$investigador['nombre']}} {{$investigador['ap_paterno']}} {{$investigador['ap_materno']}}</div>
               </div>
             </div>
           </div>

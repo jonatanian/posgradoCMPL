@@ -22,14 +22,24 @@ Route::get('/perfil', 'HomeController@perfil');
 
 Route::get('/set_perfil', 'HomeController@set_perfil');
 Route::post('/set_perfil', 'HomeController@update_perfil');
+/*
+*
+*Route group for proyectos
+*
+*/
 
-
-Route::get('/proyectos', function () {
-    return view('posgrado.proyectos');
+Route::group(['prefix' => 'proyectos'], function () {
+    Route::get('/', 'ProyectosController@index');
+    Route::get('/agregar', 'ProyectosController@agregar');
+    Route::get('/{id}', 'ProyectosController@buscar');
+    Route::post('/agregar', 'ProyectosController@crear');
 });
 
-Route::get('/publicaciones', function () {
-    return view('posgrado.publicaciones');
+Route::group(['prefix' => 'publicaciones'], function () {
+    Route::get('/', 'PublicacionesController@index');
+    Route::get('/agregar', 'PublicacionesController@agregar');
+    Route::get('/{id}', 'PublicacionesController@detalles');
+    Route::post('/agregar', 'PublicacionesController@crear');
 });
 
 Route::get('/congresos', function () {
