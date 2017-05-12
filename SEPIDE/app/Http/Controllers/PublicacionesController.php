@@ -39,9 +39,10 @@ class PublicacionesController extends Controller
      */
     public function index()
     {
-        $proyectos = Publicacion::all();
+        $invest = $this->getUser();
+        $publicaciones = Publicacion::where('creador_id',$invest['id'])->get();
         return view('posgrado.publicaciones', array('investigador'=>$this->getUser(), 
-                                                'publicaciones'=>$proyectos));
+                                                'publicaciones'=>$publicaciones));
     }
 
     public function agregar(){

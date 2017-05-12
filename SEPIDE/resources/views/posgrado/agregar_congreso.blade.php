@@ -7,20 +7,22 @@
             <div class="row">
                 <h1 class="text-center">Congresos</h1>
             </div>
-            <form class="form-horizontal">
+            <form class="form-horizontal" method="post">
+            {{ csrf_field() }}
                  <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                      <label for="inputName" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Nombre:</label>
                      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                         <input type="text" class="form-control" placeholder="Nombre">
+                         <input type="text" name="nombre_congreso" class="form-control" placeholder="Nombre">
                      </div>
                  </div>
 
                 <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                      <label for="alcance" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Alcance:</label>
                      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                         <select class="form-control">
-                                  <option value="volvo">Nacional</option>
-                                  <option value="saab">Internacional</option>
+                         <select name="alcance" class="form-control">
+                                  <option value="">&nbsp;</option>
+                                  <option value="Nacional">Nacional</option>
+                                  <option value="Internacional">Internacional</option>
                             </select>
                      </div>
                  </div>
@@ -28,11 +30,13 @@
                 <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                      <label for="participacion" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Participación:</label>
                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                            <select class="form-control">
-                              <option value="volvo">Presentación oral</option>
-                              <option value="saab">Póster</option>
-                              <option value="mercedes">Asistente</option>
-                              <option value="mercedes">Comité organizador</option>
+                            <select name="participacion" class="form-control">
+                              <option value="">&nbsp;</option>
+                              <option value="Presentación oral">Presentación oral</option>
+                              <option value="Póster">Póster</option>
+                              <option value="Asistente">Asistente</option>
+                              <option value="Comité organizador">Comité organizador</option>
+                              <option value="Comité editorial">Comité editorial</option>
                             </select>
                         </div>
                  </div>
@@ -40,10 +44,21 @@
                 <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                      <label for="fecha" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha:</label>
                      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                         <input type="date" class="fecha form-control datepicker disabled" placeholder="Fecha">
+                         <input type="date" name="fecha" class="fecha form-control datepicker disabled" placeholder="Fecha">
                      </div>
                  </div>
                  
+                <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                     <label for="registros" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Registros:</label>
+                     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                         <select name="registros" class="form-control">
+                                  <option value="">&nbsp;</option>
+                                  <option value="ISSN">ISSN</option>
+                                  <option value="ISBN">ISBN</option>
+                                  <option value="">Otro...</option>
+                            </select>
+                     </div>
+                 </div>
 
 
                  <div class="form-group">

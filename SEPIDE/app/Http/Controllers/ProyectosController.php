@@ -40,7 +40,8 @@ class ProyectosController extends Controller
      */
     public function index()
     {
-        $proyectos = Proyecto::all();
+        $invest = $this->getUser();
+        $proyectos = Proyecto::where('creador_id',$invest['id'])->get();
         return view('posgrado.proyectos', array('investigador'=>$this->getUser(), 
                                                 'proyectos'=>$proyectos));
     }

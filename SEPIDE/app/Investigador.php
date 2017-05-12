@@ -16,7 +16,7 @@ class Investigador extends Model
         $user = $this->where('user_id',Auth::id())->first();
         $auth = Users::find(Auth::id());
         $grado = $this->grado($user->grado_id);
-        return array('grado'=>$grado, 'nombre'=>$user->nombre, 'ap_paterno'=>$user->ap_paterno, 'ap_materno'=>$user->ap_materno, 'rol'=>$auth->rol_id);
+        return array('id'=>$user->id, 'grado'=>$grado, 'nombre'=>$user->nombre, 'ap_paterno'=>$user->ap_paterno, 'ap_materno'=>$user->ap_materno, 'rol'=>$auth->rol_id);
     }
 
     public function adscripciones(){

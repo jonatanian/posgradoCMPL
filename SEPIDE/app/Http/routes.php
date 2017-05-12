@@ -42,9 +42,13 @@ Route::group(['prefix' => 'publicaciones'], function () {
     Route::post('/agregar', 'PublicacionesController@crear');
 });
 
-Route::get('/congresos', function () {
-    return view('posgrado.congresos');
+Route::group(['prefix' => 'congresos'], function () {
+    Route::get('/', 'CongresosController@index');
+    Route::get('/agregar', 'CongresosController@agregar');
+    Route::get('/{id}', 'CongresosController@detalles');
+    Route::post('/agregar', 'CongresosController@crear');
 });
+
 
 Route::get('/agregar_proyecto', function () {
     return view('posgrado.agregar_proyecto');

@@ -49,11 +49,13 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
 		<li>
+    @if($investigador['rol'] == 1)
 			<div class="navbar-btn btn-group">
       			<a class="topbar-menu-toggle btn btn-sm" href="#" data-toggle="button">
           			<span class="fa fa-cog"></span>
       			</a>
     		</div>
+      @endif
 		</li>
 
         <li class="menu-divider hidden-xs">
@@ -212,6 +214,7 @@
     <section id="content_wrapper">
 
       <!-- Start: Topbar-Dropdown -->
+      @if($investigador['rol'] == 1)
       <div class="alt" id="topbar-dropmenu">
         <div class="topbar-menu row">
                       <div class="col-xs-4 col-sm-2">
@@ -221,12 +224,12 @@
               </a>
             </div>
             <div class="col-xs-4 col-sm-2">
-              <a class="metro-tile bg-warning light" href="http://148.204.90.214/SISACMPL/SIG/RD/Organigrama">
+              <a class="metro-tile bg-warning light" href="{{url('/admin')}}">
                 <span class="fa fa-sitemap text-muted"></span>
                 <span class="metro-title">Administrar usuarios</span>
               </a>
             </div>
-                    <div class="col-xs-4 col-sm-2">
+            <div class="col-xs-4 col-sm-2">
             <a class="metro-tile bg-warning light" href="http://148.204.90.214/SISACMPL/SIG/crearAvisos">
               <span class="glyphicon glyphicon-bullhorn text-muted"></span>
               <span class="metro-title">Otro</span>
@@ -234,6 +237,7 @@
           </div>
         </div>
       </div>
+      @endif
       <!-- End: Topbar-Dropdown -->
 
       <!-- Begin: Content -->
