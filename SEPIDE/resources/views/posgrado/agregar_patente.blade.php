@@ -32,14 +32,14 @@
                     <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                          <label for="fechaForma" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha de forma:</label>
                          <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                             <input type="date" name="fecha_forma" class="fecha form-control datepicker disabled" placeholder="Fecha de forma">
+                             <input type="text" name="fecha_forma" class="fecha form-control datepicker disabled" placeholder="Fecha de forma">
                          </div>
                      </div>
 
                     <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                          <label for="fechaFondo" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha de fondo:</label>
                          <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                             <input type="date" name="fecha_fondo" class="fecha form-control datepicker disabled" placeholder="Fecha de fondo">
+                             <input type="text" name="fecha_fondo" class="fecha form-control datepicker disabled" placeholder="Fecha de fondo">
                          </div>
                      </div>
                 </div>
@@ -49,7 +49,7 @@
                     <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                          <label for="fechaNotificacion" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha de notificación:</label>
                          <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                             <input type="date" name="fecha_notificacion" class="fecha form-control datepicker disabled" placeholder="Fecha de notificación">
+                             <input type="text" name="fecha_notificacion" class="fecha form-control datepicker disabled" placeholder="Fecha de notificación">
                          </div>
                      </div>
                 </div>

@@ -44,7 +44,7 @@
                 <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                      <label for="fecha" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha:</label>
                      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                         <input type="date" name="fecha" class="fecha form-control datepicker disabled" placeholder="Fecha">
+                         <input type="text" name="fecha" class="fecha form-control datepicker disabled" placeholder="Fecha">
                      </div>
                  </div>
                  
