@@ -147,14 +147,14 @@
               </li>
 
               <li>
-                <a href="">
+                <a href="{{ url('/patentes') }}">
                   <span class="glyphicon glyphicon-registration-mark"></span>
                   <span class="sidebar-title">Patentes</span>
                 </a>
               </li>
 
               <li>
-                <a href="">
+                <a href="{{ url('/transferencias') }}">
                   <span class="glyphicon glyphicon-cog"></span>
                   <span class="sidebar-title">Transferencia de tecnología e innovación</span>
                 </a>

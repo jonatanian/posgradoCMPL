@@ -31,7 +31,7 @@ Route::post('/set_perfil', 'HomeController@update_perfil');
 Route::group(['prefix' => 'proyectos'], function () {
     Route::get('/', 'ProyectosController@index');
     Route::get('/agregar', 'ProyectosController@agregar');
-    Route::get('/{id}', 'ProyectosController@buscar');
+    Route::get('/{id}', 'ProyectosController@detalles');
     Route::post('/agregar', 'ProyectosController@crear');
 });
 
@@ -49,6 +49,19 @@ Route::group(['prefix' => 'congresos'], function () {
     Route::post('/agregar', 'CongresosController@crear');
 });
 
+Route::group(['prefix' => 'patentes'], function () {
+    Route::get('/', 'PatentesController@index');
+    Route::get('/agregar', 'PatentesController@agregar');
+    Route::get('/{id}', 'PatentesController@detalles');
+    Route::post('/agregar', 'PatentesController@crear');
+});
+
+Route::group(['prefix' => 'transferencias'], function () {
+    Route::get('/', 'TransferenciasController@index');
+    Route::get('/agregar', 'TransferenciasController@agregar');
+    Route::get('/{id}', 'TransferenciasController@detalles');
+    Route::post('/agregar', 'TransferenciasController@crear');
+});
 
 Route::get('/agregar_proyecto', function () {
     return view('posgrado.agregar_proyecto');

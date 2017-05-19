@@ -47,8 +47,35 @@
                                 No aprobado
                             @endif
                             </td>
-                            <td class="col-xs-2 col-lg-2 col-md-2 col-sm-1">20-12-2018</td>
-                            <td class="col-xs-2 col-lg-2 col-md-2 col-sm-1">15-05-2020</td>
+                            <td class="col-xs-2 col-lg-2 col-md-2 col-sm-1">
+                            @if($proyecto->estatus == 'pr')
+                                <p>Fecha de presentación:<br>
+                                    <strong>{{$proyecto->fecha_presentacion}}</strong>
+                                </p>
+                            @elseif($proyecto->estatus == 'ap')
+                                <p>Fecha de notificación:<br>
+                                    <strong>{{$proyecto->fecha_notificacion}}</strong>
+                                </p>
+                            @else
+                                <p>Fecha de notificación:<br>
+                                    <strong>{{$proyecto->fecha_notificacion}}</strong>
+                                </p>
+                            @endif
+                            </td>
+                            <td class="col-xs-2 col-lg-2 col-md-2 col-sm-1">
+                            @if($proyecto->estatus == 'pr')
+                                NA
+                            @elseif($proyecto->estatus == 'ap')
+                                <p>Fecha de inicio:<br>
+                                    <strong>{{$proyecto->fecha_vigencia_inicio}}</strong>
+                                </p>
+                                <p>Fecha de témino:<br>
+                                    <strong>{{$proyecto->fecha_vigencia_fin}}</strong>
+                                </p>
+                            @else
+                                NA
+                            @endif
+                            </td>
                             <td class="col-xs-2 col-lg-2 col-md-2 col-sm-2">
                                 <div class="btn-group">
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
