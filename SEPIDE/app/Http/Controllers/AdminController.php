@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Auth;
+use Hash;
 use App\Investigador;
 use App\Users;
 
@@ -64,4 +65,20 @@ class AdminController extends Controller
         return redirect('/admin');
     }
 
+    public function password(){
+        $user = Users::find(Auth::id());
+        return view('admin.set_password');
+    }
+
+    public function set_password(Request $request){
+        try{
+            $user = Users::find(Auth::id());
+            $user->password = Hash::make($request->password);
+            $user->save();
+            return redirect('/principal');
+        }
+        catch(Exception $e){
+            return redirect('/principal');
+        }
+    }
 }

@@ -83,6 +83,12 @@ Route::get('/home', 'HomeController@index');
 *   Rutas de administrador
 *
 */
-Route::get('/admin', 'AdminController@usuarios');
-Route::get('/admin/activar/{id}', 'AdminController@activarUsuario');
-Route::get('/admin/desactivar/{id}', 'AdminController@desactivarUsuario');
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/', 'AdminController@usuarios');
+    Route::get('/activar/{id}', 'AdminController@activarUsuario');
+    Route::get('/desactivar/{id}', 'AdminController@desactivarUsuario');
+    Route::get('/password', 'AdminController@password');
+    Route::post('/password', 'AdminController@set_password');
+});
+

@@ -70,6 +70,10 @@
           </a>
           <ul class="dropdown-menu list-group dropdown-persist w250" role="menu">
             <li class="dropdown-footer">
+              <a href="{{ url('/admin/password') }}">
+              <span class="fa fa-lock pr5"></span> Cambiar contraseña </a>
+            </li>
+            <li class="dropdown-footer">
               <a href="{{ url('/logout') }}">
               <span class="fa fa-power-off pr5"></span> Cerrar sesión </a>
             </li>
