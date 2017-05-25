@@ -122,10 +122,11 @@
             </div>
 
             <div class="row">
+            @if($prof_ads)
                 <h2 class="text-center">Profesor Adscrito</h2>
                 <h3 class="text-center">{{$prof_ads->profesor_adscrito}}</h3>
             </div>
-
+            @endif
             <div class="row">
                 <h2 class="text-center">Profesor Posgrado PNPC</h2>
                 <h3 class="text-center"></h3>
