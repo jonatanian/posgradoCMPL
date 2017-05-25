@@ -8,10 +8,10 @@
                 <h2 class="text-center">I+D+i</h2>
             </div>
             <div class="row">
-                <dl>
+                <table>
                     @if(!empty($proyectos))
-                    <dt>
-                    <div class="row col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <tr>
+                    <div>
                         <h3>Proyectos:</h3>
                         <ul>
                         @foreach($proyectos as $proyecto)
@@ -19,12 +19,12 @@
                         @endforeach
                         </ul>
                     </div>
-                    </dt>
+                    </tr>
                     @endif
 
                     @if(!empty($publicaciones))
-                    <dt>
-                    <div class="row col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <tr>
+                    <div>
                         <h3>Publicaciones:</h3>
                         <ul>
                         @foreach($publicaciones as $publicacion)
@@ -32,12 +32,12 @@
                         @endforeach
                         </ul>
                     </div>
-                    </dt>
+                    </tr>
                     @endif
 
                     @if(!empty($congresos))
-                    <dt>
-                    <div class="row col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <tr>
+                    <div>
                         <h3>Congresos:</h3>
                         <ul>
                         @foreach($congresos as $congreso)
@@ -45,12 +45,12 @@
                         @endforeach
                         </ul>
                     </div>
-                    </dt>
+                    </tr>
                     @endif
 
                     @if(!empty($patentes))
-                    <dt>
-                    <div class="row col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <tr>
+                    <div>
                         <h3>Patentes:</h3>
                         <ul>
                         @foreach($patentes as $patente)
@@ -58,12 +58,12 @@
                         @endforeach
                         </ul>
                     </div>
-                    </dt>
+                    </tr>
                     @endif
 
                     @if(!empty($transferencias))
-                    <dt>
-                    <div class="row col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <tr>
+                    <div>
                         <h3>Transferencias:</h3>
                         <ul>
                         @foreach($transferencias as $transferencia)
@@ -71,12 +71,12 @@
                         @endforeach
                         </ul>
                     </div>
-                    </dt>
+                    </tr>
                     @endif
 
                     @if(!empty($conferencias))
-                    <dt>
-                    <div class="row col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <tr>
+                    <div>
                         <h3>Conferencias:</h3>
                         <ul>
                         @foreach($conferencias as $conferencia)
@@ -84,12 +84,12 @@
                         @endforeach
                         </ul>
                     </div>
-                    </dt>
+                    </tr>
                     @endif
 
                     @if(!empty($software))
-                    <dt>
-                    <div class="row col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <tr>
+                    <div>
                         <h3>Software:</h3>
                         <ul>
                         @foreach($software as $soft)
@@ -97,12 +97,12 @@
                         @endforeach
                         </ul>
                     </div>
-                    </dt>
+                    </tr>
                     @endif
 
                     @if(!empty($movilidad))
-                    <dt>
-                    <div class="row col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <tr>
+                    <div>
                         <h3>Movilidad:</h3>
                         <ul>
                         @foreach($movilidad as $mov)
@@ -110,9 +110,9 @@
                         @endforeach
                         </ul>
                     </div>
-                    </dt>
+                    </tr>
                     @endif
-                </dl>
+                </table>
             </div>
             <div class="row">
                 <h2 class="text-center">Adscripción al programa CMP+L</h2>
