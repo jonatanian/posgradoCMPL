@@ -21,7 +21,9 @@ Route::get('/perfil', 'HomeController@perfil');
 
 
 Route::get('/set_perfil', 'HomeController@set_perfil');
-Route::post('/set_perfil', 'HomeController@update_perfil');
+Route::post('/set_perfil', 'HomeController@create_perfil');
+Route::get('/edit_perfil/{id}', 'HomeController@edit_perfil');
+Route::post('/edit_perfil/{id}', 'HomeController@update_perfil');
 /*
 *
 *Route group for proyectos
@@ -61,6 +63,27 @@ Route::group(['prefix' => 'transferencias'], function () {
     Route::get('/agregar', 'TransferenciasController@agregar');
     Route::get('/{id}', 'TransferenciasController@detalles');
     Route::post('/agregar', 'TransferenciasController@crear');
+});
+
+Route::group(['prefix' => 'conferencias'], function () {
+    Route::get('/', 'ConferenciasController@index');
+    Route::get('/agregar', 'ConferenciasController@agregar');
+    Route::get('/{id}', 'ConferenciasController@detalles');
+    Route::post('/agregar', 'ConferenciasController@crear');
+});
+
+Route::group(['prefix' => 'software'], function () {
+    Route::get('/', 'SoftwareController@index');
+    Route::get('/agregar', 'SoftwareController@agregar');
+    Route::get('/{id}', 'SoftwareController@detalles');
+    Route::post('/agregar', 'SoftwareController@crear');
+});
+
+Route::group(['prefix' => 'movilidad'], function () {
+    Route::get('/', 'MovilidadController@index');
+    Route::get('/agregar', 'MovilidadController@agregar');
+    Route::get('/{id}', 'MovilidadController@detalles');
+    Route::post('/agregar', 'MovilidadController@crear');
 });
 
 Route::get('/agregar_proyecto', function () {

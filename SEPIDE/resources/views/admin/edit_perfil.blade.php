@@ -7,14 +7,14 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Ingresa tus datos personales</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/set_perfil') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/edit_perfil/'.$investigador->id) }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="nombre" class="col-md-4 control-label">Nombre</label>
 
                             <div class="col-md-6">
-                                <input id="nombre" type="text" class="form-control" name="nombre" value="{{ old('name') }}">
+                                <input id="nombre" type="text" class="form-control" name="nombre" value="{{$investigador->nombre}}">
 
                             </div>
                         </div>
@@ -23,7 +23,7 @@
                             <label for="ap_paterno" class="col-md-4 control-label">Apellido paterno</label>
 
                             <div class="col-md-6">
-                                <input id="ap_paterno" type="text" class="form-control" name="ap_paterno" value="{{ old('name') }}">
+                                <input id="ap_paterno" type="text" class="form-control" name="ap_paterno" value="{{$investigador->ap_paterno}}">
 
                             </div>
                         </div>
@@ -32,7 +32,7 @@
                             <label for="ap_materno" class="col-md-4 control-label">Apellido materno</label>
 
                             <div class="col-md-6">
-                                <input id="ap_materno" type="text" class="form-control" name="ap_materno" value="{{ old('name') }}">
+                                <input id="ap_materno" type="text" class="form-control" name="ap_materno" value="{{ $investigador->ap_materno }}">
 
                             </div>
                         </div>
@@ -42,11 +42,14 @@
 
                             <div class="col-md-6">
                                 <select name="grado" class="form-control">
-                                    <option value=""></option>
-                                    <option value="1">Lic.</option>
-                                    <option value="2">Ing.</option>
-                                    <option value="3">Mtro.</option>
-                                    <option value="4">Dr.</option>
+                                    @foreach($grados as $grado)
+                                        <option value="">&nbsp;</option>
+                                        @if($investigador->grado_id == $grado->id)
+                                            <option value="{{$grado->id}}" selected>{{$grado->nombre_corto}}</option>
+                                        @else
+                                            <option value="{{$grado->id}}">{{$grado->nombre_corto}}</option>
+                                        @endif
+                                    @endforeach
                                 
                                 </select>
 

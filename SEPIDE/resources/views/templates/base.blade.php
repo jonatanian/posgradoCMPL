@@ -19,6 +19,15 @@
   <!-- Admin Forms CSS -->
   <link rel="stylesheet" type="text/css" href="{{ URL::asset("assets/admin-tools/admin-forms/css/admin-forms.css") }}">
 
+  <link rel="stylesheet" type="text/css" href="{{ URL::asset("assets/js/bootstrap-tags.css") }}">
+  
+  <script type="text/javascript" src="{{URL::asset('assets/jquery/jquery-3.2.1.min.js')}}"></script>
+  <script type="text/javascript" src="{{URL::asset('assets/jquery/jquery-ui/jquery-ui.min.js')}}"></script>
+
+  <script src='{{ URL::asset("assets/js/bootstrap-tags.min.js") }}'></script>
+
+  
+
   <!-- Favicon -->
   {{ URL::asset("assets/img/favicon.ico") }}
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -72,6 +81,10 @@
             <li class="dropdown-footer">
               <a href="{{ url('/admin/password') }}">
               <span class="fa fa-lock pr5"></span> Cambiar contraseña </a>
+            </li>
+            <li class="dropdown-footer">
+              <a href="{{ url('/edit_perfil/'.$investigador['id']) }}">
+              <span class="fa fa-user pr5"></span> Modificar perfil </a>
             </li>
             <li class="dropdown-footer">
               <a href="{{ url('/logout') }}">
@@ -165,14 +178,14 @@
               </li>
 
               <li>
-                <a href="">
+                <a href="{{ url('/conferencias') }}">
                   <span class="glyphicon glyphicon-bullhorn"></span>
-                  <span class="sidebar-title">Divulgación del conocimiento</span>
+                  <span class="sidebar-title">Conferencias</span>
                 </a>
               </li>
 
               <li>
-                <a href="">
+                <a href="{{ url('/software') }}">
                   <span class="glyphicon glyphicon-console"></span>
                   <span class="sidebar-title">Software</span>
                 </a>
@@ -186,7 +199,7 @@
               </li>
 
               <li>
-                <a href="">
+                <a href="{{ url('/movilidad') }}">
                   <span class="glyphicon glyphicon-plane"></span>
                   <span class="sidebar-title">Movilidad</span>
                 </a>
@@ -279,6 +292,8 @@
 
 <!-- Validaciones de la vista -->
   <script type="text/javascript" src="{{URL::asset('site/js/main.js')}}"></script>
+
+ 
 
   <script type="text/javascript">
   jQuery(document).ready(function() {
