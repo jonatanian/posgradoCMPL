@@ -19,14 +19,7 @@
   <!-- Admin Forms CSS -->
   <link rel="stylesheet" type="text/css" href="{{ URL::asset("assets/admin-tools/admin-forms/css/admin-forms.css") }}">
 
-  <link rel="stylesheet" type="text/css" href="{{ URL::asset("assets/js/bootstrap-tags.css") }}">
-  
-  <script type="text/javascript" src="{{URL::asset('assets/jquery/jquery-3.2.1.min.js')}}"></script>
-  <script type="text/javascript" src="{{URL::asset('assets/jquery/jquery-ui/jquery-ui.min.js')}}"></script>
-
-  <script src='{{ URL::asset("assets/js/bootstrap-tags.min.js") }}'></script>
-
-  
+  <link rel="stylesheet" type="text/css" href="{{ URL::asset("assets/js/bootstrap-tagsinput.css") }}">
 
   <!-- Favicon -->
   {{ URL::asset("assets/img/favicon.ico") }}
@@ -289,6 +282,10 @@
   <script type="text/javascript" src="{{URL::asset('assets/js/utility/utility.js')}}"></script>
   <script type="text/javascript" src="{{URL::asset('assets/js/demo/demo.js')}}"></script>
   <script type="text/javascript" src="{{URL::asset('assets/js/main.js')}}"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+  <script type="text/javascript" src="{{URL::asset('assets/js/bootstrap-tagsinput.min.js')}}"></script>
+  <script type="text/javascript" src="{{URL::asset('assets/js/bootstrap-tagsinput-angular.min.js')}}"></script>
 
 <!-- Validaciones de la vista -->
   <script type="text/javascript" src="{{URL::asset('site/js/main.js')}}"></script>

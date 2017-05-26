@@ -60,7 +60,7 @@
                      </div>
                  </div>
 
-                <div id="my-tag-list" class="tag-list"></div>
+                <input type="text" value="Amsterdam,Washington,Sydney,Beijing,Cairo" data-role="tagsinput" />
 
 
                  <div class="form-group">
@@ -74,17 +74,5 @@
         </div>
 
     </section>
-
-    <script>
-        $(function() {
-            // If using Bootstrap 2, be sure to include:
-            // Tags.bootstrapVersion = "2";
-            $('#my-tag-list').tags({
-                tagData:["boilerplate", "tags"],
-                suggestions:["basic", "suggestions"],
-                excludeList:["not", "these", "words"]
-            });
-        });
-    </script>
 
 @endsection
