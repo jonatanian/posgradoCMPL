@@ -84,7 +84,11 @@
                         </select>
                      </div>
                  </div>
-                 <div id="div_estatus_presentado" class="hidden">
+                 @if($proyecto->estatus == "pr")
+                    <div id="div_estatus_presentado" class="">
+                 @else
+                    <div id="div_estatus_presentado" class="hidden">
+                 @endif
                     <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                          <label for="fechaPresentacion" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha de presentación:</label>
                          <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
@@ -98,7 +102,11 @@
                          </div>
                      </div>
                 </div>
-                <div id="div_estatus_aprobado" class="hidden">
+                @if($proyecto->estatus == "ap")
+                    <div id="div_estatus_aprobado" class="">
+                @else
+                    <div id="div_estatus_aprobado" class="hidden">
+                @endif
                     <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                          <label for="fechaInicio" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha de inicio:</label>
                          <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
@@ -113,8 +121,11 @@
                          </div>
                      </div>
                 </div>
-
-                <div id="div_notificacion" class="hidden">
+                @if($proyecto->estatus == "ap" || $proyecto->estatus == "na")
+                    <div id="div_notificacion" class="">
+                @else
+                    <div id="div_notificacion" class="hidden">
+                @endif
                     <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                          <label for="fechaNotificacion" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha de notificación:</label>
                          <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
@@ -122,8 +133,11 @@
                          </div>
                      </div>
                 </div>
-
-                <div id="div_monto" class="hidden">
+                @if($proyecto->estatus == "ap")
+                    <div id="div_monto" class="">
+                @else
+                    <div id="div_monto" class="hidden">
+                @endif
                     <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                          <label for="inputName" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Monto financiado:</label>
                          <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
