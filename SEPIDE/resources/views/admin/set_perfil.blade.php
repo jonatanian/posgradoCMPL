@@ -46,7 +46,9 @@
                                     <option value="1">Lic.</option>
                                     <option value="2">Ing.</option>
                                     <option value="3">Mtro.</option>
+                                    <option value="5">Mtra.</option>
                                     <option value="4">Dr.</option>
+                                    <option value="6">Dra.</option>
                                 
                                 </select>
 
@@ -90,7 +92,43 @@
                                 </select>
 
                             </div>
-                        </div>                
+                        </div>   
+
+                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                            <label for="profesor_posgrado" class="col-md-4 control-label">Profesor posgrado</label>
+                            <div class="col-md-6">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" value="1" name="profesor1">
+                                        PNPC Núcleo básico
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" value="2" name="profesor2">
+                                        PNPC Núcleo asociado
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" value="3" name="profesor3">
+                                        SNI
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" value="4" name="profesor4">
+                                        EDI
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" value="5" name="profesor5">
+                                        COFA
+                                    </label>
+                                </div>
+                            </div>
+                        </div>             
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">

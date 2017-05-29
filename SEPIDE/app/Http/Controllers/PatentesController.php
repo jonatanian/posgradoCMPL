@@ -71,4 +71,13 @@ class PatentesController extends Controller
             return redirect('/patentes')->with('error','Error en el registro, vuelva a intentar');
         }
     }
+    public function eliminar($id=0){
+        try{
+            Patente::find($id)->forceDelete();
+            return redirect('/patentes')->with('success','La patente se eliminó de forma exitosa');
+        }
+        catch(Exception $e){
+            return redirect('/patentes')->with('error','Error, vuelva a intentar');
+        }
+    }
 }

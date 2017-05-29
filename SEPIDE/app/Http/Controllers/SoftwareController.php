@@ -73,4 +73,13 @@ class SoftwareController extends Controller
             return redirect('/software')->with('error','Error en el registro, vuelva a intentar');
         }
     }
+    public function eliminar($id=0){
+        try{
+            Software::find($id)->forceDelete();
+            return redirect('/software')->with('success','El software se eliminó de forma exitosa');
+        }
+        catch(Exception $e){
+            return redirect('/software')->with('error','Error, vuelva a intentar');
+        }
+    }
 }

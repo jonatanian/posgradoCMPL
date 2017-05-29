@@ -20,6 +20,10 @@ use App\Profesor_adscrito;
 use App\Adscripcion_investigador;
 use App\Adscripcion;
 use App\Grado;
+use App\Investigador_profesor_posgrado;
+use App\Profesor_posgrado;
+use App\Investigador_indicador;
+use App\Estudiante_indicador;
 
 class HomeController extends Controller
 {
@@ -115,6 +119,37 @@ class HomeController extends Controller
             $ads_inv->adscripcion_id = $request->adscripcion3;
             $ads_inv->save();
         }
+
+        if(isset($request->profesor1)){
+            $prof = new Investigador_profesor_posgrado;
+            $prof->investigador_id = $investigador->id;
+            $prof->profesor_posgrado_id = $request->profesor1;
+            $prof->save();
+        }
+        if(isset($request->profesor2)){
+            $prof = new Investigador_profesor_posgrado;
+            $prof->investigador_id = $investigador->id;
+            $prof->profesor_posgrado_id = $request->profesor2;
+            $prof->save();
+        }
+        if(isset($request->profesor3)){
+            $prof = new Investigador_profesor_posgrado;
+            $prof->investigador_id = $investigador->id;
+            $prof->profesor_posgrado_id = $request->profesor3;
+            $prof->save();
+        }
+        if(isset($request->profesor4)){
+            $prof = new Investigador_profesor_posgrado;
+            $prof->investigador_id = $investigador->id;
+            $prof->profesor_posgrado_id = $request->profesor4;
+            $prof->save();
+        }
+        if(isset($request->profesor5)){
+            $prof = new Investigador_profesor_posgrado;
+            $prof->investigador_id = $investigador->id;
+            $prof->profesor_posgrado_id = $request->profesor5;
+            $prof->save();
+        }
             
 
         return redirect('/principal');
@@ -165,6 +200,39 @@ class HomeController extends Controller
             $ads_inv->adscripcion_id = $request->adscripcion3;
             $ads_inv->save();
         }
+
+        Investigador_profesor_posgrado::where('investigador_id', $id)->delete();
+
+        if(isset($request->profesor1)){
+            $prof = new Investigador_profesor_posgrado;
+            $prof->investigador_id = $investigador->id;
+            $prof->profesor_posgrado_id = $request->profesor1;
+            $prof->save();
+        }
+        if(isset($request->profesor2)){
+            $prof = new Investigador_profesor_posgrado;
+            $prof->investigador_id = $investigador->id;
+            $prof->profesor_posgrado_id = $request->profesor2;
+            $prof->save();
+        }
+        if(isset($request->profesor3)){
+            $prof = new Investigador_profesor_posgrado;
+            $prof->investigador_id = $investigador->id;
+            $prof->profesor_posgrado_id = $request->profesor3;
+            $prof->save();
+        }
+        if(isset($request->profesor4)){
+            $prof = new Investigador_profesor_posgrado;
+            $prof->investigador_id = $investigador->id;
+            $prof->profesor_posgrado_id = $request->profesor4;
+            $prof->save();
+        }
+        if(isset($request->profesor5)){
+            $prof = new Investigador_profesor_posgrado;
+            $prof->investigador_id = $investigador->id;
+            $prof->profesor_posgrado_id = $request->profesor5;
+            $prof->save();
+        }
             
 
         return redirect('/principal');
@@ -182,6 +250,9 @@ class HomeController extends Controller
         $movilidad = Movilidad::where('creador_id', $invest->id)->get();
         $prof_ads = Profesor_adscrito::where('investigador_id', $invest->id)->first();
         $adscripciones = Adscripcion_investigador::where('investigador_id',$invest->id)->get();
+        $prof_pos = Investigador_profesor_posgrado::where('investigador_id', $invest->id)->get();
+        $est_ind = Estudiante_indicador::all();
+        $inv_ind = Investigador_indicador::all();
         
         return view('posgrado.perfil', array(
             'investigador'=>$this->getUser(),
@@ -195,6 +266,9 @@ class HomeController extends Controller
             'movilidad' => $movilidad,
             'prof_ads' => $prof_ads,
             'adscripciones' => $adscripciones,
+            'prof_pos' => $prof_pos,
+            'est_ind' => $est_ind,
+            'inv_ind' => $inv_ind,
         ));
     }
 }

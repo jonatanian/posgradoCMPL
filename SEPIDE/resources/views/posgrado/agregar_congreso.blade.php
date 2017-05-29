@@ -42,24 +42,46 @@
                  </div>
 
                 <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                     <label for="fecha" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha:</label>
+                     <label for="fecha" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha de inicio:</label>
                      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                         <input type="text" name="fecha" class="fecha form-control datepicker disabled" placeholder="Fecha">
+                         <input type="text" name="fecha_inicio" class="fecha form-control datepicker disabled" placeholder="Fecha de inicio">
+                     </div>
+                 </div>
+
+                <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                     <label for="fecha" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha de término:</label>
+                     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                         <input type="text" name="fecha_termino" class="fecha form-control datepicker disabled" placeholder="Fecha de término">
                      </div>
                  </div>
                  
                 <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                      <label for="registros" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Registros:</label>
                      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                         <select name="registros" class="form-control">
+                         <select name="tipo_registro" class="form-control" id="elem_reg">
                                   <option value="">&nbsp;</option>
                                   <option value="ISSN">ISSN</option>
                                   <option value="ISBN">ISBN</option>
-                                  <option value="">Otro...</option>
+                                  <option value="otro">Otro...</option>
                             </select>
                      </div>
                  </div>
 
+                 <div class="hidden" id="div_otro">
+                    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                         <label for="inputName" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Otro:</label>
+                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                             <input type="text" name="otro" class="form-control" placeholder="Otro">
+                         </div>
+                     </div>
+                 </div>
+
+                 <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                     <label for="inputName" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Número de registro:</label>
+                     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                         <input type="text" name="registro" class="form-control" placeholder="Registro">
+                     </div>
+                 </div>
 
                  <div class="form-group">
                      <div class="col-xs-10">

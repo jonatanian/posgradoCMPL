@@ -47,6 +47,7 @@ Route::group(['prefix' => 'publicaciones'], function () {
     Route::post('/agregar', 'PublicacionesController@crear');
     Route::get('/editar/{id}','PublicacionesController@editar');
     Route::post('/editar/{id}','PublicacionesController@actualizar');
+    Route::get('/eliminar/{id}', 'PublicacionesController@eliminar');
 });
 
 Route::group(['prefix' => 'congresos'], function () {
@@ -56,6 +57,7 @@ Route::group(['prefix' => 'congresos'], function () {
     Route::post('/agregar', 'CongresosController@crear');
     Route::get('/editar/{id}','CongresosController@editar');
     Route::post('/editar/{id}','CongresosController@actualizar');
+    Route::get('/eliminar/{id}', 'CongresosController@eliminar');
 });
 
 Route::group(['prefix' => 'patentes'], function () {
@@ -65,6 +67,7 @@ Route::group(['prefix' => 'patentes'], function () {
     Route::post('/agregar', 'PatentesController@crear');
     Route::get('/editar/{id}','PatentesController@editar');
     Route::post('/editar/{id}','PatentesController@actualizar');
+    Route::get('/eliminar/{id}', 'PatentesController@eliminar');
 });
 
 Route::group(['prefix' => 'transferencias'], function () {
@@ -74,6 +77,7 @@ Route::group(['prefix' => 'transferencias'], function () {
     Route::post('/agregar', 'TransferenciasController@crear');
     Route::get('/editar/{id}','TransferenciasController@editar');
     Route::post('/editar/{id}','TransferenciasController@actualizar');
+    Route::get('/eliminar/{id}', 'TransferenciasController@eliminar');
 });
 
 Route::group(['prefix' => 'conferencias'], function () {
@@ -83,6 +87,7 @@ Route::group(['prefix' => 'conferencias'], function () {
     Route::post('/agregar', 'ConferenciasController@crear');
     Route::get('/editar/{id}','ConferenciasController@editar');
     Route::post('/editar/{id}','ConferenciasController@actualizar');
+    Route::get('/eliminar/{id}', 'ConferenciasController@eliminar');
 });
 
 Route::group(['prefix' => 'software'], function () {
@@ -92,6 +97,7 @@ Route::group(['prefix' => 'software'], function () {
     Route::post('/agregar', 'SoftwareController@crear');
     Route::get('/editar/{id}','SoftwareController@editar');
     Route::post('/editar/{id}','SoftwareController@actualizar');
+    Route::get('/eliminar/{id}', 'SoftwareController@eliminar');
 });
 
 Route::group(['prefix' => 'movilidad'], function () {
@@ -101,6 +107,7 @@ Route::group(['prefix' => 'movilidad'], function () {
     Route::post('/agregar', 'MovilidadController@crear');
     Route::get('/editar/{id}','MovilidadController@editar');
     Route::post('/editar/{id}','MovilidadController@actualizar');
+    Route::get('/eliminar/{id}', 'MovilidadController@eliminar');
 });
 
 Route::get('/agregar_proyecto', function () {

@@ -3,6 +3,16 @@
 @section('content')
     <section id="content">
         <div class="content">
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
             <div class="row">
                 <h1 class="text-center">Transferencia de Tecnología e Innovación</h1>
             </div>
@@ -61,7 +71,7 @@
                                     <li><a href="#">Editar</a></li>
                                     <li><a href="#">Participantes</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li class="alert-danger"><a href="#"><span class="glyphicon glyphicon-remove red" aria-hidden="true"></span>Borrar</a></li>
+                                    <li class="alert-danger"><a href="{{url('transferencias/eliminar/'.$transferencia->id)}}"><span class="glyphicon glyphicon-remove red" aria-hidden="true"></span>Eliminar</a></li>
                                 </ul>
                             </div>
                         </td>

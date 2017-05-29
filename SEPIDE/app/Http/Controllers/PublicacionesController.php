@@ -58,6 +58,10 @@ class PublicacionesController extends Controller
             $publicacion->tipo = $data['tipo'];
             $publicacion->alcance = $data['alcance'];
             $publicacion->medio_publicacion = $data['medio_publicacion'];
+            $publicacion->tipo_registro = $data['tipo_registro'];
+            $publicacion->registro = $data['registro'];
+            $publicacion->otro = $data['otro'];
+            $publicacion->otro_registro = $data['otro_registro'];
 
             if(!empty($data['fecha_aceptacion']))
                 $publicacion->fecha_aceptacion = $data['fecha_aceptacion'];
@@ -70,6 +74,50 @@ class PublicacionesController extends Controller
             return redirect('/publicaciones')->with('success','El proyecto se creo de forma exitosa');
         }catch(Exception $e){
             return redirect('/publicaciones')->with('error','Error en el registro del proyecto, vuelva a intentar');
+        }
+    }
+
+    public function actualizar(Request $request, $id){
+        $data = $request->all();
+        try{
+            $publicacion = Publicacion::find($id);
+            $publicacion->nombre_publicacion = $data['nombre_publicacion'];
+            $publicacion->tipo = $data['tipo'];
+            $publicacion->alcance = $data['alcance'];
+            $publicacion->medio_publicacion = $data['medio_publicacion'];
+            $publicacion->tipo_registro = $data['tipo_registro'];
+            $publicacion->registro = $data['registro'];
+            $publicacion->otro = $data['otro'];
+            $publicacion->otro_registro = $data['otro_registro'];
+
+            if(!empty($data['fecha_aceptacion']))
+                $publicacion->fecha_aceptacion = $data['fecha_aceptacion'];
+            if(!empty($data['fecha_publicacion']))
+                $publicacion->fecha_publicacion = $data['fecha_publicacion'];
+
+            $invest = Investigador::where('user_id',Auth::id())->first();
+            $publicacion->creador_id = $invest->id;
+            $publicacion->save();
+            return redirect('/publicaciones')->with('success','El proyecto se creo de forma exitosa');
+        }catch(Exception $e){
+            return redirect('/publicaciones')->with('error','Error en el registro del proyecto, vuelva a intentar');
+        }
+    }
+
+    public function editar($id = NULL){
+        $publicacion = Publicacion::find($id);
+        return view('posgrado.editar_publicacion', array('investigador'=>$this->getUser(),
+                                                        'publicacion' =>$publicacion,
+                                                        ));
+    }
+
+    public function eliminar($id=0){
+        try{
+            Publicacion::find($id)->forceDelete();
+            return redirect('/publicaciones')->with('success','La publicación se eliminó de forma exitosa');
+        }
+        catch(Exception $e){
+            return redirect('/publicaciones')->with('error','Error, vuelva a intentar');
         }
     }
 }

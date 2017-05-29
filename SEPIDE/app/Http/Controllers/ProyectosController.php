@@ -10,6 +10,8 @@ use App\Investigador;
 use App\Users;
 use App\Proyecto;
 use App\Financiamiento;
+use App\Investigador_indicador;
+use App\Estudiante_indicador;
 
 class ProyectosController extends Controller
 {
@@ -48,8 +50,10 @@ class ProyectosController extends Controller
 
     public function agregar(){
         $financiamiento = Financiamiento::all();
+        $investigadores = Investigador::all();
         return view('posgrado.agregar_proyecto', array('investigador'=>$this->getUser(),
-                                                        'financiamiento'=>$financiamiento
+                                                        'financiamiento'=>$financiamiento,
+                                                        'investigadores'=>$investigadores,
                                                         ));
     }
 
@@ -80,6 +84,24 @@ class ProyectosController extends Controller
             $invest = Investigador::where('user_id',Auth::id())->first();
             $proyecto->creador_id = $invest->id;
             $proyecto->save();
+
+            foreach($data['investigadores'] as $investigador){
+                $inv_pro = new Investigador_indicador();
+                $inv_pro->indicador = 2; //Id del indicador Proyectos I+D+i
+                $inv_pro->investigador_id = $investigador;
+                $inv_pro->indicador_id = $proyecto->id;
+                $inv_pro->save();
+            }
+
+            $estudiantes = explode(",",$data['estudiantes']);
+            foreach($estudiantes as $estudiante){
+                $est_ind = new Estudiante_indicador();
+                $est_ind->estudiante = $estudiante;
+                $est_ind->indicador = 2;
+                $est_ind->indicador_id = $proyecto->id;
+                $est_ind->save();
+            }
+
             return redirect('/proyectos')->with('success','El proyecto se creo de forma exitosa');
         }catch(Exception $e){
             return redirect('/proyectos')->with('error','Error en el registro del proyecto, vuelva a intentar');
@@ -89,9 +111,20 @@ class ProyectosController extends Controller
     public function editar($id = NULL){
         $financiamiento = Financiamiento::all();
         $proyecto = Proyecto::find($id);
+        $est_ind = Estudiante_indicador::where('indicador_id',$id)->where('indicador',2)->get();
+        $estudiante = array();
+        foreach($est_ind as $est){
+            array_push($estudiante, $est->estudiante);
+        }
+        $inv_ind = Investigador_indicador::where('indicador_id', $id)->where('indicador',2)->get();
+        $investigadores = Investigador::all();
         return view('posgrado.editar_proyecto', array('investigador'=>$this->getUser(),
                                                         'financiamiento'=>$financiamiento,
                                                         'proyecto' =>$proyecto,
+                                                        'est_ind' => implode(",",$estudiante),
+                                                        'inv_ind' => $inv_ind,
+                                                        'investigadores'=>$investigadores,
+                                                        'bandera'=>0,
                                                         ));
     }
 
@@ -122,10 +155,49 @@ class ProyectosController extends Controller
             $invest = Investigador::where('user_id',Auth::id())->first();
             $proyecto->creador_id = $invest->id;
             $proyecto->save();
+
+            Investigador_indicador::where('indicador_id',$id)->where('indicador',2)->forceDelete();
+            foreach($data['investigadores'] as $investigador){
+                $inv_pro = new Investigador_indicador();
+                $inv_pro->indicador = 2; //Id del indicador Proyectos I+D+i
+                $inv_pro->investigador_id = $investigador;
+                $inv_pro->indicador_id = $proyecto->id;
+                $inv_pro->save();
+            }
+            Estudiante_indicador::where('indicador_id',$id)->where('indicador',2)->forceDelete();
+            $estudiantes = explode(",",$data['estudiantes']);
+            foreach($estudiantes as $estudiante){
+                $est_ind = new Estudiante_indicador();
+                $est_ind->estudiante = $estudiante;
+                $est_ind->indicador = 2;
+                $est_ind->indicador_id = $proyecto->id;
+                $est_ind->save();
+            }
+
             return redirect('/proyectos')->with('success','El proyecto se actualizó de forma exitosa');
         }catch(Exception $e){
             return redirect('/proyectos')->with('error','Error en la actualización del proyecto, vuelva a intentar');
         }
+    }
+
+    public function detalles($id = NULL){
+        $financiamiento = Financiamiento::all();
+        $proyecto = Proyecto::find($id);
+        $est_ind = Estudiante_indicador::where('indicador_id',$id)->where('indicador',2)->get();
+        $estudiante = array();
+        foreach($est_ind as $est){
+            array_push($estudiante, $est->estudiante);
+        }
+        $inv_ind = Investigador_indicador::where('indicador_id', $id)->where('indicador',2)->get();
+        $investigadores = Investigador::all();
+        return view('posgrado.detalles_proyecto', array('investigador'=>$this->getUser(),
+                                                        'financiamiento'=>$financiamiento,
+                                                        'proyecto' =>$proyecto,
+                                                        'est_ind' => implode(",",$estudiante),
+                                                        'inv_ind' => $inv_ind,
+                                                        'investigadores'=>$investigadores,
+                                                        'bandera'=>0,
+                                                        ));
     }
 
     public function eliminar($id=0){

@@ -19,7 +19,7 @@
                      <label for="inputEmail" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Financiamiento:</label>
                      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
                         
-                         <select name="financiamiento_id" class="form-control">
+                         <select name="financiamiento_id" class="form-control" id="elem_fin">
                               <option value"" disabled>-- Externo --</option>
                               @foreach($financiamiento as $fin)
                                 @if($fin->tipo == 'ext')
@@ -32,16 +32,19 @@
                                     <option value="{{$fin->id}}">{{$fin->nombre_financiamiento}}</option>
                                   @endif
                                 @endforeach
+                            <option value="0">Otro...</option>
                         </select>
                      </div>
                  </div>
 
-                <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                     <label for="otro" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Otro:</label>
-                     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                         <input type="text" name="otro" class="form-control" placeholder="Otro">
-                     </div>
-                 </div>
+                <div class="hidden" id="div_otro">
+                    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                         <label for="otro" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Otro:</label>
+                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                             <input type="text" name="otro" class="form-control" placeholder="Otro">
+                         </div>
+                     </div>
+                 </div>
 
                  <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                      <label for="programa" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Programa:</label>
@@ -91,6 +94,7 @@
                      </div>
                 </div>
 
+
                 <div id="div_notificacion" class="hidden">
                     <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                          <label for="fechaNotificacion" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha de notificación:</label>
@@ -102,28 +106,58 @@
 
                 <div id="div_monto" class="hidden">
                     <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
                          <label for="inputName" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Monto financiado:</label>
-                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                             <input type="text" name="monto_total" class="form-control" placeholder="Total">
-                         </div>
+                         <div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <span class="input-group-addon">$</span>
+                            <input type="text" class="form-control" name="monto_total" aria-label="Amount (to the nearest dollar)" placeholder="Monto financiado"> 
+                         </div>
+
                          <label for="inputName" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Partida 2000:</label>
-                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                             <input type="text" name="monto_p2" class="form-control" placeholder="Partida 2000">
-                         </div>
+                         <div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <span class="input-group-addon">$</span>
+                            <input type="text" class="form-control" name="monto_p2" aria-label="Amount (to the nearest dollar)" placeholder="Partida 2000"> 
+                         </div>
+
                          <label for="inputName" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Partida 3000:</label>
-                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                             <input type="text" name="monto_p3" class="form-control" placeholder="Partida 3000">
-                         </div>
+                         <div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <span class="input-group-addon">$</span>
+                            <input type="text" class="form-control" name="monto_p3" aria-label="Amount (to the nearest dollar)" placeholder="Partida 3000"> 
+                         </div>
+
                          <label for="inputName" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Partida 5000:</label>
-                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                             <input type="text" name="monto_p5" class="form-control" placeholder="Partida 5000">
-                         </div>
+                         <div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <span class="input-group-addon">$</span>
+                            <input type="text" class="form-control" name="monto_p5" aria-label="Amount (to the nearest dollar)" placeholder="Partida 5000"> 
+                         </div>
+
                          <label for="inputName" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Estimulos al personal:</label>
-                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                             <input type="text" name="estimulos" class="form-control" placeholder="Estimulos al personal">
-                         </div>
+                         <div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <span class="input-group-addon">$</span>
+                            <input type="text" class="form-control" name="estimulos" aria-label="Amount (to the nearest dollar)" placeholder="Estimulos al personal"> 
+                         </div>
+                         
                      </div>
                 </div>
+
+                <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                     <label for="estatus" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Participantes:</label>
+                     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                         <select id="elem_estatus" name="investigadores[]" class="form-control" multiple>
+                              <option value="">&nbsp;</option>
+                              @foreach($investigadores as $inv)
+                                <option value="{{$inv['id']}}">{{$inv['nombre']}} {{$inv['ap_paterno']}} {{$inv['ap_materno']}}</option>
+                              @endforeach
+                        </select>
+                     </div>
+                 </div>
+
+                <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                     <label for="estatus" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Estudiantes:</label>
+                     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                         <input type="text" name="estudiantes" data-role="tagsinput" />
+                     </div>
+                 </div>
 
                  <div class="form-group">
                      <div class="col-xs-10">

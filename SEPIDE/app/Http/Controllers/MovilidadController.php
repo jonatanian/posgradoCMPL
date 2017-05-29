@@ -71,4 +71,13 @@ class MovilidadController extends Controller
             return redirect('/movilidad')->with('error','Error en el registro, vuelva a intentar');
         }
     }
+    public function eliminar($id=0){
+        try{
+            Movilidad::find($id)->forceDelete();
+            return redirect('/movilidad')->with('success','La movilidad se eliminó de forma exitosa');
+        }
+        catch(Exception $e){
+            return redirect('/movilidad')->with('error','Error, vuelva a intentar');
+        }
+    }
 }

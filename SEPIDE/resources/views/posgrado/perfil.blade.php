@@ -8,19 +8,56 @@
                 <h2 class="text-center">I+D+i</h2>
             </div>
             <div class="row">
-                <table>
-                    @if(!empty($proyectos))
+                <h3>Proyectos:</h3>
+                <table class="table-striped">
                     <tr>
-                    <div>
-                        <h3>Proyectos:</h3>
-                        <ul>
-                        @foreach($proyectos as $proyecto)
-                            <li><a href="{{ url('proyectos/'.$proyecto->id) }}">{{$proyecto->nombre_proyecto}}</a></li>
-                        @endforeach
-                        </ul>
-                    </div>
+                        <th class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Nombre</th>
+                        <th class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Participantes</th>
+                        <th class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Acciones</th>
                     </tr>
-                    @endif
+                    @foreach($proyectos as $proyecto)
+                        <tr>
+                            <td class="col-xs-4 col-sm-4 col-md-4 col-lg-4">{{$proyecto->nombre_proyecto}}</td>
+                            <td class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                Docentes:
+                                <ul>
+                                    @foreach($inv_ind as $invest)
+                                        @if($invest->indicador == 2)
+                                            @if($invest->indicador_id == $proyecto->id)
+                                                <li>{{$invest->investigador->nombre}} {{$invest->investigador->ap_paterno}} {{$invest->investigador->ap_materno}}</li>
+                                            @endif
+                                        @endif
+                                    @endforeach
+                                </ul>
+                                Estudiantes:
+                                <ul>
+                                    @foreach($est_ind as $est)
+                                        @if($invest->indicador == 2)
+                                            @if($invest->indicador_id == $proyecto->id)
+                                                <li>{{$est->estudiante}}</li>
+                                            @endif
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            </td>
+                            <td class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                <div class="btn-group">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Acciones <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Detalles</a></li>
+                                    <li><a href="{{url('proyectos/editar/'.$proyecto->id)}}">Editar</a></li>
+                                    <li><a href="#">Participantes</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li class="alert-danger"><a href="{{url('proyectos/eliminar/'.$proyecto->id)}}"><span class="glyphicon glyphicon-remove red" aria-hidden="true"></span>Eliminar</a></li>
+                                </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </table>
+                <table>
 
                     @if(!empty($publicaciones))
                     <tr>
@@ -129,7 +166,9 @@
             @endif
             <div class="row">
                 <h2 class="text-center">Profesor Posgrado PNPC</h2>
-                <h3 class="text-center"></h3>
+                @foreach($prof_pos as $prof)
+                    <h3 class="text-center">{{$prof->profesor_posgrado->nombre_posgrado}}</h3>
+                @endforeach
             </div>
         </div>
     </section>

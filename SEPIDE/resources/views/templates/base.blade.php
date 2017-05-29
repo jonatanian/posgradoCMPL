@@ -187,7 +187,7 @@
               <li>
                 <a href="">
                   <span class="glyphicon glyphicon-flash"></span>
-                  <span class="sidebar-title">Servicio</span>
+                  <span class="sidebar-title">Servicios</span>
                 </a>
               </li>
 

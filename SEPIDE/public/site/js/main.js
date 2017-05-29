@@ -42,5 +42,40 @@ $( "#elem_estatus_transferencia" ).change( function() {
     $("#div_fecha_transferencia_inicio").addClass("hidden");
     $("#div_fecha_transferencia_termino").addClass("hidden");
   }
-  
+});
+
+$("#elem_registro").change(function(){
+  if($(this).val() == "otro"){
+    $("#div_otro_registro").removeClass("hidden");
+  }
+  else{
+    $("#div_otro_registro").addClass("hidden");
+  }
+});
+
+$("#elem_medio").change(function(){
+  if($(this).val() == "otro"){
+    $("#div_otro").removeClass("hidden");
+  }
+  else{
+    $("#div_otro").addClass("hidden");
+  }
+});
+
+$("#elem_reg").change(function(){
+  if($(this).val() == "otro"){
+    $("#div_otro").removeClass("hidden");
+  }
+  else{
+    $("#div_otro").addClass("hidden");
+  }
+});
+
+$("#elem_fin").change(function(){
+  if($(this).val() == "otro"){
+    $("#div_otro").removeClass("hidden");
+  }
+  else{
+    $("#div_otro").addClass("hidden");
+  }
 });

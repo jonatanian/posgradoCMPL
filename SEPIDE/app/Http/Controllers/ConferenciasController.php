@@ -70,4 +70,13 @@ class ConferenciasController extends Controller
             return redirect('/conferencias')->with('error','Error en el registro, vuelva a intentar');
         }
     }
+    public function eliminar($id=0){
+        try{
+            Conferencia::find($id)->forceDelete();
+            return redirect('/conferencias')->with('success','La conferencia se eliminó de forma exitosa');
+        }
+        catch(Exception $e){
+            return redirect('/conferencias')->with('error','Error, vuelva a intentar');
+        }
+    }
 }

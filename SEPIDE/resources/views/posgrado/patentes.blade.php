@@ -3,6 +3,16 @@
 @section('content')
     <section id="content">
         <div class="content">
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
             <div class="row">
                 <h1 class="text-center">Patentes</h1>
             </div>
@@ -34,10 +44,10 @@
                         </td>
                         <td class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                             @if($patente->estatus == 'pr')
-                                <p>Exámen de forma:<br>
+                                <p>Fecha de examen de forma:<br>
                                     <strong>{{$patente->fecha_forma}}</strong>
                                 </p>
-                                <p>Exámen de fondo:<br>
+                                <p>Fecha de examen de fondo:<br>
                                     <strong>{{$patente->fecha_fondo}}</strong>
                                 </p>
                             @elseif($patente->estatus == 'ap')
@@ -69,7 +79,7 @@
                                     <li><a href="#">Editar</a></li>
                                     <li><a href="#">Participantes</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li class="alert-danger"><a href="#"><span class="glyphicon glyphicon-remove red" aria-hidden="true"></span>Borrar</a></li>
+                                    <li class="alert-danger"><a href="{{url('patentes/eliminar/'.$patente->id)}}"><span class="glyphicon glyphicon-remove red" aria-hidden="true"></span>Eliminar</a></li>
                                 </ul>
                             </div>
                         </td>

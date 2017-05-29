@@ -40,16 +40,23 @@
                                     @endif
                                   @endif
                                 @endforeach
+                            <option value"0">Otro</option>
                         </select>
                      </div>
                  </div>
 
-                <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                     <label for="otro" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Otro:</label>
-                     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                         <input type="text" name="otro" class="form-control" placeholder="Otro" value="{{$proyecto->otro}}">
-                     </div>
-                 </div>
+                @if($proyecto->financiamiento_id == 0)
+                    <div class="" id="div_otro">
+                @else
+                    <div class="hidden" id="div_otro">
+                @endif
+                    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                         <label for="otro" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Otro:</label>
+                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                             <input type="text" name="otro" class="form-control" placeholder="Otro" value="{{$proyecto->otro}}">
+                         </div>
+                     </div>
+                 </div>
 
                  <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                      <label for="programa" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Programa:</label>
@@ -140,27 +147,66 @@
                 @endif
                     <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                          <label for="inputName" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Monto financiado:</label>
-                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                             <input type="text" name="monto_total" class="form-control" placeholder="Total" value="{{$proyecto->monto_total}}">
-                         </div>
+                         <div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <span class="input-group-addon">$</span>
+                            <input type="text" class="form-control" name="monto_total" aria-label="Amount (to the nearest dollar)" placeholder="Monto financiado" value="{{$proyecto->monto_total}}"> 
+                         </div>
+
                          <label for="inputName" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Partida 2000:</label>
-                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                             <input type="text" name="monto_p2" class="form-control" placeholder="Partida 2000" value="{{$proyecto->monto_p2}}">
-                         </div>
+                         <div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <span class="input-group-addon">$</span>
+                            <input type="text" class="form-control" name="monto_p2" aria-label="Amount (to the nearest dollar)" placeholder="Partida 2000" value="{{$proyecto->monto_p2}}"> 
+                         </div>
+
                          <label for="inputName" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Partida 3000:</label>
-                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                             <input type="text" name="monto_p3" class="form-control" placeholder="Partida 3000" value="{{$proyecto->monto_p3}}">
-                         </div>
+                         <div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <span class="input-group-addon">$</span>
+                            <input type="text" class="form-control" name="monto_p3" aria-label="Amount (to the nearest dollar)" placeholder="Partida 3000" value="{{$proyecto->monto_p3}}"> 
+                         </div>
+
                          <label for="inputName" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Partida 5000:</label>
-                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                             <input type="text" name="monto_p5" class="form-control" placeholder="Partida 5000" value="{{$proyecto->monto_p5}}">
-                         </div>
+                         <div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <span class="input-group-addon">$</span>
+                            <input type="text" class="form-control" name="monto_p5" aria-label="Amount (to the nearest dollar)" placeholder="Partida 5000" value="{{$proyecto->monto_p5}}"> 
+                         </div>
+
                          <label for="inputName" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Estimulos al personal:</label>
-                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                             <input type="text" name="estimulos" class="form-control" placeholder="Estimulos al personal" value="{{$proyecto->estimulos}}">
-                         </div>
+                         <div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <span class="input-group-addon">$</span>
+                            <input type="text" class="form-control" name="estimulos" aria-label="Amount (to the nearest dollar)" placeholder="Estimulos al personal" value="{{$proyecto->estimulos}}"> 
+                         </div>
                      </div>
                 </div>
+
+                <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                     <label for="estatus" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Participantes:</label>
+                     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                         <select id="elem_estatus" name="investigadores[]" class="form-control" multiple>
+                              <option value="">&nbsp;</option>
+                              @foreach($investigadores as $inv)
+                                @foreach($inv_ind as $i)
+                                    @if($i->investigador_id == $inv["id"])
+                                        <option value="{{$inv['id']}}" selected>{{$inv['nombre']}} {{$inv['ap_paterno']}} {{$inv['ap_materno']}}</option>
+                                        {! $bandera = 1 !}
+                                        @break
+                                    @else
+                                        {! $bandera = 0 !}
+                                    @endif
+                                @endforeach
+                                @if($bandera != 1)
+                                    <option value="{{$inv['id']}}">{{$inv['nombre']}} {{$inv['ap_paterno']}} {{$inv['ap_materno']}}</option>
+                                @endif
+                              @endforeach
+                        </select>
+                     </div>
+                 </div>
+
+                <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                     <label for="estatus" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Estudiantes:</label>
+                     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                         <input type="text" name="estudiantes" data-role="tagsinput" value="{{$est_ind}}"/>
+                     </div>
+                 </div>
 
                  <div class="form-group">
                      <div class="col-xs-10">

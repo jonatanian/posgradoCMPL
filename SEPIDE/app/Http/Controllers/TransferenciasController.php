@@ -73,4 +73,13 @@ class TransferenciasController extends Controller
             return redirect('/transferencias')->with('error','Error en el registro, vuelva a intentar');
         }
     }
+    public function eliminar($id=0){
+        try{
+            Transferencia::find($id)->forceDelete();
+            return redirect('/transferencias')->with('success','La transferencia se eliminó de forma exitosa');
+        }
+        catch(Exception $e){
+            return redirect('/transferencias')->with('error','Error, vuelva a intentar');
+        }
+    }
 }

@@ -57,16 +57,30 @@ class CongresosController extends Controller
             $congreso->nombre_congreso = $data['nombre_congreso'];
             $congreso->alcance = $data['alcance'];
             $congreso->participacion = $data['participacion'];
-            if(!empty($data['fecha']))
-                $congreso->fecha = $data['fecha'];
-            $congreso->registros = $data['registros'];
+            if(!empty($data['fecha_inicio']))
+                $congreso->fecha_inicio = $data['fecha_inicio'];
+            if(!empty($data['fecha_termino']))
+                $congreso->fecha_termino = $data['fecha_termino'];
+            $congreso->tipo_registro = $data['tipo_registro'];
+            $congreso->registro = $data['registro'];
+            $congreso->otro = $data['otro'];
 
             $invest = Investigador::where('user_id',Auth::id())->first();
             $congreso->creador_id = $invest->id;
             $congreso->save();
-            return redirect('/congresos')->with('success','El proyecto se creo de forma exitosa');
+            return redirect('/congresos')->with('success','El congreso se creo de forma exitosa');
         }catch(Exception $e){
-            return redirect('/congresos')->with('error','Error en el registro del proyecto, vuelva a intentar');
+            return redirect('/congresos')->with('error','Error en el registro, vuelva a intentar');
+        }
+    }
+
+    public function eliminar($id=0){
+        try{
+            Congreso::find($id)->forceDelete();
+            return redirect('/congresos')->with('success','El congreso se eliminó de forma exitosa');
+        }
+        catch(Exception $e){
+            return redirect('/congresos')->with('error','Error, vuelva a intentar');
         }
     }
 }

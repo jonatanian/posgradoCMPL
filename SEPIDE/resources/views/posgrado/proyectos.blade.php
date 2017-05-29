@@ -36,7 +36,13 @@
                 @foreach($proyectos as $proyecto)
                         <tr>
                             <td class="col-xs-2 col-lg-2 col-md-2 col-sm-3">{{$proyecto->nombre_proyecto}}</td>
-                            <td class="col-xs-2 col-lg-2 col-md-2 col-sm-2">{{$proyecto->financiamiento->nombre_financiamiento}}</td>
+                            <td class="col-xs-2 col-lg-2 col-md-2 col-sm-2">
+                            @if($proyecto->financiamiento_id == 0)
+                                Otro
+                            @else
+                                {{$proyecto->financiamiento->nombre_financiamiento}}
+                            @endif
+                            </td>
                             <td class="col-xs-2 col-lg-2 col-md-2 col-sm-2">{{$proyecto->programa}}</td>
                             <td class="col-xs-2 col-lg-2 col-md-2 col-sm-1">
                             @if($proyecto->estatus == 'ap')
@@ -82,9 +88,8 @@
                                     Acciones <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Detalles</a></li>
+                                    <li><a href="{{url('proyectos/'.$proyecto->id)}}">Detalles</a></li>
                                     <li><a href="{{url('proyectos/editar/'.$proyecto->id)}}">Editar</a></li>
-                                    <li><a href="#">Participantes</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li class="alert-danger"><a href="{{url('proyectos/eliminar/'.$proyecto->id)}}"><span class="glyphicon glyphicon-remove red" aria-hidden="true"></span>Eliminar</a></li>
                                 </ul>

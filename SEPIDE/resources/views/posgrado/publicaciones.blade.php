@@ -37,7 +37,13 @@
                             <td class="col-xs-2 col-lg-2 col-md-2 col-sm-3">{{$publicacion->nombre_publicacion}}</td>
                             <td class="col-xs-2 col-lg-2 col-md-2 col-sm-2">{{$publicacion->tipo}}</td>
                             <td class="col-xs-2 col-lg-2 col-md-2 col-sm-2">{{$publicacion->alcance}}</td>
-                            <td class="col-xs-2 col-lg-2 col-md-2 col-sm-1">{{$publicacion->medio_publicacion}}</td>
+                            <td class="col-xs-2 col-lg-2 col-md-2 col-sm-1">
+                            @if($publicacion->medio_publicacion == "otro")
+                                {{$publicacion->otro}}
+                            @else
+                                {{$publicacion->medio_publicacion}}
+                            @endif
+                            </td>
                             <td class="col-xs-2 col-lg-2 col-md-2 col-sm-1">{{$publicacion->fecha_aceptacion}}</td>
                             <td class="col-xs-2 col-lg-2 col-md-2 col-sm-1">{{$publicacion->fecha_publicacion}}</td>
                             <td class="col-xs-2 col-lg-2 col-md-2 col-sm-2">
@@ -47,10 +53,10 @@
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li><a href="#">Detalles</a></li>
-                                    <li><a href="#">Editar</a></li>
+                                    <li><a href="{{url('publicaciones/editar/'.$publicacion->id)}}">Editar</a></li>
                                     <li><a href="#">Autores</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li class="alert-danger"><a href="#"><span class="glyphicon glyphicon-remove red" aria-hidden="true"></span>Borrar</a></li>
+                                    <li class="alert-danger"><a href="{{url('publicaciones/eliminar/'.$publicacion->id)}}"><span class="glyphicon glyphicon-remove red" aria-hidden="true"></span>Eliminar</a></li>
                                 </ul>
                                 </div>
                             </td>
