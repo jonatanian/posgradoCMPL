@@ -93,7 +93,7 @@
                               <option value="JCR" selected>JCR</option>
                               <option value="Indexada">Indexada</option>
                               <option value="otro">Otro...</option>
-                            @elseif($publicacion->medio_publicacion == Indexada)
+                            @elseif($publicacion->medio_publicacion == "Indexada")
                               <option value="INDAUTOR">INDAUTOR</option>
                               <option value="JCR">JCR</option>
                               <option value="Indexada" selected>Indexada</option>
@@ -183,6 +183,35 @@
                          <input type="text" name="fecha_publicacion" class="fecha form-control datepicker disabled" placeholder="Fecha de publicación" value="{{$publicacion->fecha_publicacion}}">
                      </div>
                   
+                 </div>
+
+                <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                     <label for="estatus" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Autores:</label>
+                     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                         <select id="elem_estatus" name="investigadores[]" class="form-control" multiple>
+                              @foreach($investigadores as $inv)
+                                @foreach($inv_ind as $i)
+                                    @if($i->investigador_id == $inv["id"])
+                                        <option value="{{$inv['id']}}" selected>{{$inv['nombre']}} {{$inv['ap_paterno']}} {{$inv['ap_materno']}}</option>
+                                        {! $bandera = 1 !}
+                                        @break
+                                    @else
+                                        {! $bandera = 0 !}
+                                    @endif
+                                @endforeach
+                                @if($bandera != 1)
+                                    <option value="{{$inv['id']}}">{{$inv['nombre']}} {{$inv['ap_paterno']}} {{$inv['ap_materno']}}</option>
+                                @endif
+                              @endforeach
+                        </select>
+                     </div>
+                 </div>
+
+                <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                     <label for="estatus" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Estudiantes:</label>
+                     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                         <input type="text" name="estudiantes" data-role="tagsinput" value="{{$est_ind}}"/>
+                     </div>
                  </div>
 
                  <div class="form-group">

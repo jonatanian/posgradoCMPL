@@ -184,16 +184,12 @@ class ProyectosController extends Controller
         $financiamiento = Financiamiento::all();
         $proyecto = Proyecto::find($id);
         $est_ind = Estudiante_indicador::where('indicador_id',$id)->where('indicador',2)->get();
-        $estudiante = array();
-        foreach($est_ind as $est){
-            array_push($estudiante, $est->estudiante);
-        }
         $inv_ind = Investigador_indicador::where('indicador_id', $id)->where('indicador',2)->get();
         $investigadores = Investigador::all();
         return view('posgrado.detalles_proyecto', array('investigador'=>$this->getUser(),
                                                         'financiamiento'=>$financiamiento,
                                                         'proyecto' =>$proyecto,
-                                                        'est_ind' => implode(",",$estudiante),
+                                                        'est_ind' => $est_ind,
                                                         'inv_ind' => $inv_ind,
                                                         'investigadores'=>$investigadores,
                                                         'bandera'=>0,

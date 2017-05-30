@@ -182,7 +182,6 @@
                      <label for="estatus" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Participantes:</label>
                      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
                          <select id="elem_estatus" name="investigadores[]" class="form-control" multiple>
-                              <option value="">&nbsp;</option>
                               @foreach($investigadores as $inv)
                                 @foreach($inv_ind as $i)
                                     @if($i->investigador_id == $inv["id"])
