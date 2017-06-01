@@ -63,7 +63,7 @@
                         <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                             @if($patente->registro == 'un')
                                 Único
-                            @elseif($patente->registro == 'ot')
+                            @elseif($patente->registro == 'otro')
                                 Otro
                             @else
                                 -
@@ -75,9 +75,8 @@
                                     Acciones <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Detalles</a></li>
-                                    <li><a href="#">Editar</a></li>
-                                    <li><a href="#">Participantes</a></li>
+                                    <li><a href="{{url('patentes/'.$patente->id)}}">Detalles</a></li>
+                                    <li><a href="{{url('patentes/editar/'.$patente->id)}}">Editar</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li class="alert-danger"><a href="{{url('patentes/eliminar/'.$patente->id)}}"><span class="glyphicon glyphicon-remove red" aria-hidden="true"></span>Eliminar</a></li>
                                 </ul>

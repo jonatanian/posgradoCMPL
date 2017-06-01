@@ -73,6 +73,45 @@ class SoftwareController extends Controller
             return redirect('/software')->with('error','Error en el registro, vuelva a intentar');
         }
     }
+
+    public function editar($id){
+        $software = Software::find($id);
+        return view('posgrado.editar_software', array('investigador'=>$this->getUser(),
+                                                        'software'=>$software,
+                                                        ));
+    }
+
+    public function actualizar(Request $request, $id){
+        $data = $request->all();
+        try{
+            $software = Software::find($id);
+            $software->descripcion = $data['descripcion'];
+            if(!empty($data['fecha_inicio']))
+                $software->fecha_inicio = $data['fecha_inicio'];
+            if(!empty($data['fecha_termino']))
+                $software->fecha_termino = $data['fecha_termino'];
+            $software->registro = $data['registro'];
+            $software->estatus = $data['estatus'];
+            if(!empty($data['fecha_aprobacion']))
+                $software->fecha_aprobacion = $data['fecha_aprobacion'];
+            $software->area_aplicacion = $data['area_aplicacion'];
+
+            $invest = Investigador::where('user_id',Auth::id())->first();
+            $software->creador_id = $invest->id;
+            $software->save();
+            return redirect('/software')->with('success','El software se modificó de forma exitosa');
+        }catch(Exception $e){
+            return redirect('/software')->with('error','Error en el registro, vuelva a intentar');
+        }
+    }
+
+    public function detalles($id = NULL){
+        $software = Software::find($id);
+        return view('posgrado.detalles_software', array('investigador'=>$this->getUser(),
+                                                        'software' =>$software,
+                                                        ));
+    }
+
     public function eliminar($id=0){
         try{
             Software::find($id)->forceDelete();

@@ -66,11 +66,52 @@ class MovilidadController extends Controller
             $invest = Investigador::where('user_id',Auth::id())->first();
             $movilidad->creador_id = $invest->id;
             $movilidad->save();
+
+
+
             return redirect('/movilidad')->with('success','La movilidad se creo de forma exitosa');
         }catch(Exception $e){
             return redirect('/movilidad')->with('error','Error en el registro, vuelva a intentar');
         }
     }
+
+    public function editar($id){
+        $movilidad = Movilidad::find($id);
+        return view('posgrado.editar_movilidad', array('investigador'=>$this->getUser(),
+                                                        'movilidad'=>$movilidad,
+                                                        ));
+    }
+
+    public function actualizar(Request $request, $id){
+        $data = $request->all();
+        try{
+            $movilidad = Movilidad::find($id);
+            $movilidad->tipo = $data['tipo'];
+            $movilidad->nombre_programa = $data['nombre_programa'];
+            if(!empty($data['fecha_inicio']))
+                $movilidad->fecha_inicio = $data['fecha_inicio'];
+            if(!empty($data['fecha_termino']))
+                $movilidad->fecha_termino = $data['fecha_termino'];
+            $movilidad->alcance = $data['alcance'];
+            $movilidad->institucion_destino = $data['institucion_destino'];
+
+            $invest = Investigador::where('user_id',Auth::id())->first();
+            $movilidad->creador_id = $invest->id;
+            $movilidad->save();
+
+            return redirect('/movilidad')->with('success','La movilidad se modificó de forma exitosa');
+        }catch(Exception $e){
+            return redirect('/movilidad')->with('error','Error en el registro, vuelva a intentar');
+        }
+    }
+
+    public function detalles($id = NULL){
+        $movilidad = Movilidad::find($id);
+        return view('posgrado.detalles_movilidad', array('investigador'=>$this->getUser(),
+                                                        'movilidad' =>$movilidad,
+                                                        ));
+    }
+
     public function eliminar($id=0){
         try{
             Movilidad::find($id)->forceDelete();

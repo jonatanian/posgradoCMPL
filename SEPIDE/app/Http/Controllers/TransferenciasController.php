@@ -73,6 +73,38 @@ class TransferenciasController extends Controller
             return redirect('/transferencias')->with('error','Error en el registro, vuelva a intentar');
         }
     }
+
+    public function editar($id = NULL){
+        $transferencia = Transferencia::find($id);
+        return view('posgrado.editar_transferencia', array('investigador'=>$this->getUser(),
+                                                        'transferencia' =>$transferencia,
+                                                        ));
+    }
+
+    public function actualizar(Request $request, $id){
+        $data = $request->all();
+        try{
+            $transferencia = Transferencia::find($id);
+            $transferencia->nombre_transferencia = $data['nombre_transferencia'];
+            $transferencia->tipo = $data['tipo'];
+            $transferencia->licencia = $data['licencia'];
+            $transferencia->estatus = $data['estatus'];
+            if(!empty($data['fecha_inicio']))
+                $transferencia->fecha_inicio = $data['fecha_inicio'];
+            if(!empty($data['fecha_termino']))
+                $transferencia->fecha_termino = $data['fecha_termino'];
+            
+            $transferencia->receptor = $data['receptor'];
+            $transferencia->monto = $data['monto'];
+            $invest = Investigador::where('user_id',Auth::id())->first();
+            $transferencia->creador_id = $invest->id;
+            $transferencia->save();
+            return redirect('/transferencias')->with('success','La transferencia se modificó de forma exitosa');
+        }catch(Exception $e){
+            return redirect('/transferencias')->with('error','Error en el registro, vuelva a intentar');
+        }
+    }
+
     public function eliminar($id=0){
         try{
             Transferencia::find($id)->forceDelete();

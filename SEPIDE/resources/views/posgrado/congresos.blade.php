@@ -54,9 +54,8 @@
                                     Acciones <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Detalles</a></li>
-                                    <li><a href="#">Editar</a></li>
-                                    <li><a href="#">Participantes</a></li>
+                                    <li><a href="{{url('congresos/'.$congreso->id)}}">Detalles</a></li>
+                                    <li><a href="{{url('congresos/editar/'.$congreso->id)}}">Editar</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li class="alert-danger"><a href="{{url('congresos/eliminar/'.$congreso->id)}}"><span class="glyphicon glyphicon-remove red" aria-hidden="true"></span>Eliminar</a></li>
                                 </ul>

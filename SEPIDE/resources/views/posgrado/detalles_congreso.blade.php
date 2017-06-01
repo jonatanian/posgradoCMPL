@@ -9,69 +9,61 @@
             </div>
             <form class="form-horizontal" method="post">
             {{ csrf_field() }}
+            <div class="row">
                  <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                      <label for="inputName" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Nombre:</label>
                      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                         <input type="text" name="nombre_congreso" class="form-control" placeholder="Nombre">
+                         {{$congreso->nombre_congreso}}
                      </div>
                  </div>
 
                 <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                      <label for="alcance" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Alcance:</label>
                      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                         <select name="alcance" class="form-control">
-                                  <option value="">&nbsp;</option>
-                                  <option value="Nacional">Nacional</option>
-                                  <option value="Internacional">Internacional</option>
-                            </select>
+                         {{$congreso->alcance}}
                      </div>
                  </div>
 
                 <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                      <label for="participacion" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Participación:</label>
                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                            <select name="participacion" class="form-control">
-                              <option value="">&nbsp;</option>
-                              <option value="Presentación oral">Presentación oral</option>
-                              <option value="Póster">Póster</option>
-                              <option value="Asistente">Asistente</option>
-                              <option value="Comité organizador">Comité organizador</option>
-                              <option value="Comité editorial">Comité editorial</option>
-                            </select>
+                            {{$congreso->participacion}}
                         </div>
                  </div>
-
+            </div>
+            <hr>
+            <div class="row">
                 <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                      <label for="fecha" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha de inicio:</label>
                      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                         <input type="text" name="fecha_inicio" class="fecha form-control datepicker disabled" placeholder="Fecha de inicio">
+                        {{$congreso->fecha_inicio}}
                      </div>
                  </div>
 
                 <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                      <label for="fecha" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha de término:</label>
                      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                         <input type="text" name="fecha_termino" class="fecha form-control datepicker disabled" placeholder="Fecha de término">
+                         {{$congreso->fecha_termino}}
                      </div>
                  </div>
-                 
+            </div>
+            <hr>
+            <div class="row">
                 <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                      <label for="registros" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Registros:</label>
                      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                         <select name="tipo_registro" class="form-control" id="elem_reg">
-                                  <option value="">&nbsp;</option>
-                                  <option value="ISSN">ISSN</option>
-                                  <option value="ISBN">ISBN</option>
-                                  <option value="otro">Otro...</option>
-                            </select>
+                        {{$congreso->tipo_registro}}
                      </div>
                  </div>
-
+                @if($congreso->tipo_registro == "otro")
+                 <div class="" id="div_otro">
+                @else
                  <div class="hidden" id="div_otro">
+                @endif
                     <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                          <label for="inputName" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Otro:</label>
                          <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                             <input type="text" name="otro" class="form-control" placeholder="Otro">
+                             {{$congreso->otro}}
                          </div>
                      </div>
                  </div>
@@ -79,28 +71,34 @@
                  <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                      <label for="inputName" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Número de registro:</label>
                      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                         <input type="text" name="registro" class="form-control" placeholder="Registro">
+                         {{$congreso->registro}}
                      </div>
                  </div>
-
-                 <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            </div>
+            <hr>
+            <div class="row">
+                <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                      <label for="estatus" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Participantes:</label>
                      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                         <select id="elem_estatus" name="investigadores[]" class="form-control" multiple>
-                              @foreach($investigadores as $inv)
-                                <option value="{{$inv['id']}}">{{$inv['nombre']}} {{$inv['ap_paterno']}} {{$inv['ap_materno']}}</option>
-                              @endforeach
-                        </select>
+                         <ul>
+                         @foreach($inv_ind as $inv)
+                            <li>{{$inv->investigador->nombre}} {{$inv->investigador->ap_paterno}} {{$inv->investigador->ap_materno}}</li>
+                         @endforeach
+                         </ul>
                      </div>
                  </div>
 
                 <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                      <label for="estatus" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Estudiantes:</label>
                      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                         <input type="text" name="estudiantes" data-role="tagsinput" />
+                         <ul>
+                         @foreach($est_ind as $est)
+                            <li>{{$est->estudiante}}</li>
+                        @endforeach
+                        </ul>
                      </div>
                  </div>
-
+            </div>
                  <div class="form-group">
                      <div class="col-xs-10">
                          <button type="submit" class="btn btn-primary">Guardar</button>

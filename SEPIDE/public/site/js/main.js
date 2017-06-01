@@ -79,3 +79,12 @@ $("#elem_fin").change(function(){
     $("#div_otro").addClass("hidden");
   }
 });
+
+$("#elem_patente").change(function(){
+  if($(this).val() == "otro"){
+    $("#div_participantes").removeClass("hidden");
+  }
+  else{
+    $("#div_participantes").addClass("hidden");
+  }
+});
