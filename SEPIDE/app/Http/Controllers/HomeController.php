@@ -20,10 +20,13 @@ use App\Profesor_adscrito;
 use App\Adscripcion_investigador;
 use App\Adscripcion;
 use App\Grado;
+use App\Docencia;
+use App\Servicio;
 use App\Investigador_profesor_posgrado;
 use App\Profesor_posgrado;
 use App\Investigador_indicador;
 use App\Estudiante_indicador;
+
 
 class HomeController extends Controller
 {
@@ -73,7 +76,41 @@ class HomeController extends Controller
     }
 
     public function principal(){
-        return view('posgrado.principal',array('investigador'=>$this->getUser()));
+        $invest = Investigador::all();
+        $proyectos = Proyecto::all();
+        $publicaciones = Publicacion::all();
+        $congresos = Congreso::all();
+        $patentes = Patente::all();
+        $transferencias = Transferencia::all();
+        $conferencias = Conferencia::all();
+        $docencias = Docencia::all();
+        $software = Software::all();
+        $servicios = Servicio::all();
+        $movilidad = Movilidad::all();
+        $prof_ads = Profesor_adscrito::all();
+        $adscripciones = Adscripcion_investigador::all();
+        $prof_pos = Investigador_profesor_posgrado::all();
+        $est_ind = Estudiante_indicador::all();
+        $inv_ind = Investigador_indicador::all();
+        
+        return view('posgrado.principal', array(
+            'investigador'=>$this->getUser(),
+            'proyectos' => $proyectos,
+            'publicaciones' => $publicaciones,
+            'congresos' => $congresos,
+            'patentes' => $patentes,
+            'transferencias' => $transferencias,
+            'conferencias' => $conferencias,
+            'docencias' => $docencias,
+            'software' => $software,
+            'servicios' => $servicios,
+            'movilidad' => $movilidad,
+            'prof_ads' => $prof_ads,
+            'adscripciones' => $adscripciones,
+            'prof_pos' => $prof_pos,
+            'est_ind' => $est_ind,
+            'inv_ind' => $inv_ind,
+        ));
     }
 
     public function set_perfil(){
@@ -246,7 +283,9 @@ class HomeController extends Controller
         $patentes = Patente::where('creador_id', $invest->id)->get();
         $transferencias = Transferencia::where('creador_id', $invest->id)->get();
         $conferencias = Conferencia::where('creador_id', $invest->id)->get();
+        $docencias = Docencia::where('creador_id', $invest->id)->get();
         $software = Software::where('creador_id', $invest->id)->get();
+        $servicios = Servicio::where('creador_id', $invest->id)->get();
         $movilidad = Movilidad::where('creador_id', $invest->id)->get();
         $prof_ads = Profesor_adscrito::where('investigador_id', $invest->id)->first();
         $adscripciones = Adscripcion_investigador::where('investigador_id',$invest->id)->get();
@@ -262,7 +301,9 @@ class HomeController extends Controller
             'patentes' => $patentes,
             'transferencias' => $transferencias,
             'conferencias' => $conferencias,
+            'docencias' => $docencias,
             'software' => $software,
+            'servicios' => $servicios,
             'movilidad' => $movilidad,
             'prof_ads' => $prof_ads,
             'adscripciones' => $adscripciones,
