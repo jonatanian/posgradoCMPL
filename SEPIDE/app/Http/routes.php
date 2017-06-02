@@ -110,17 +110,26 @@ Route::group(['prefix' => 'movilidad'], function () {
     Route::get('/eliminar/{id}', 'MovilidadController@eliminar');
 });
 
-Route::get('/agregar_proyecto', function () {
-    return view('posgrado.agregar_proyecto');
+Route::group(['prefix' => 'docencias'], function () {
+    Route::get('/', 'DocenciasController@index');
+    Route::get('/agregar', 'DocenciasController@agregar');
+    Route::get('/{id}', 'DocenciasController@detalles');
+    Route::post('/agregar', 'DocenciasController@crear');
+    Route::get('/editar/{id}','DocenciasController@editar');
+    Route::post('/editar/{id}','DocenciasController@actualizar');
+    Route::get('/eliminar/{id}', 'DocenciasController@eliminar');
 });
 
-Route::get('/agregar_publicacion', function () {
-    return view('posgrado.agregar_publicacion');
+Route::group(['prefix' => 'servicios'], function () {
+    Route::get('/', 'ServiciosController@index');
+    Route::get('/agregar', 'ServiciosController@agregar');
+    Route::get('/{id}', 'ServiciosController@detalles');
+    Route::post('/agregar', 'ServiciosController@crear');
+    Route::get('/editar/{id}','ServiciosController@editar');
+    Route::post('/editar/{id}','ServiciosController@actualizar');
+    Route::get('/eliminar/{id}', 'ServiciosController@eliminar');
 });
 
-Route::get('/agregar_congreso', function () {
-    return view('posgrado.agregar_congreso');
-});
 Route::auth();
 
 Route::get('/home', 'HomeController@index');

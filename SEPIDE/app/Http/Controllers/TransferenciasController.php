@@ -105,6 +105,16 @@ class TransferenciasController extends Controller
         }
     }
 
+    public function detalles($id = NULL){
+        $transferencia = Transferencia::find($id);
+        $investigadores = Investigador::all();
+        return view('posgrado.detalles_transferencia', array('investigador'=>$this->getUser(),
+                                                        'transferencia' =>$transferencia,
+                                                        'investigadores'=>$investigadores,
+                                                        'bandera'=>0,
+                                                        ));
+    }
+
     public function eliminar($id=0){
         try{
             Transferencia::find($id)->forceDelete();

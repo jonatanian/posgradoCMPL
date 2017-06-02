@@ -178,6 +178,13 @@
               </li>
 
               <li>
+                <a href="{{ url('/docencias') }}">
+                  <span class="glyphicon glyphicon-education"></span>
+                  <span class="sidebar-title">Docencia</span>
+                </a>
+              </li>
+
+              <li>
                 <a href="{{ url('/software') }}">
                   <span class="glyphicon glyphicon-console"></span>
                   <span class="sidebar-title">Software</span>
@@ -185,7 +192,7 @@
               </li>
 
               <li>
-                <a href="">
+                <a href="{{ url('/servicios') }}">
                   <span class="glyphicon glyphicon-flash"></span>
                   <span class="sidebar-title">Servicios</span>
                 </a>
@@ -201,7 +208,14 @@
               <li>
                 <a href="">
                   <span class="glyphicon glyphicon-book"></span>
-                  <span class="sidebar-title">Dirección de tesis</span>
+                  <span class="sidebar-title">Dirección de tesis CMP+L</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="">
+                  <span class="glyphicon glyphicon-bookmark"></span>
+                  <span class="sidebar-title">Dirección de tesis institucional</span>
                 </a>
               </li>
               

@@ -88,3 +88,12 @@ $("#elem_patente").change(function(){
     $("#div_participantes").addClass("hidden");
   }
 });
+
+$("#elem_invitado").change(function(){
+  if($(this).val() == "Invitado"){
+    $("#div_invitados").removeClass("hidden");
+  }
+  else{
+    $("#div_invitados").addClass("hidden");
+  }
+});
