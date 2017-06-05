@@ -167,12 +167,12 @@ class ServiciosController extends Controller
     }
 
     public function detalles($id = NULL){
-        $conferencia = Conferencia::find($id);
-        $est_ind = Estudiante_indicador::where('indicador_id',$id)->where('indicador',7)->get();
-        $inv_ind = Investigador_indicador::where('indicador_id', $id)->where('indicador',7)->get();
+        $servicio = Servicio::find($id);
+        $est_ind = Estudiante_indicador::where('indicador_id',$id)->where('indicador',10)->get();
+        $inv_ind = Investigador_indicador::where('indicador_id', $id)->where('indicador',10)->get();
         $investigadores = Investigador::all();
-        return view('posgrado.detalles_conferencia', array('investigador'=>$this->getUser(),
-                                                        'conferencia' =>$conferencia,
+        return view('posgrado.detalles_servicio', array('investigador'=>$this->getUser(),
+                                                        'servicio' =>$servicio,
                                                         'est_ind' => $est_ind,
                                                         'inv_ind' => $inv_ind,
                                                         'investigadores'=>$investigadores,

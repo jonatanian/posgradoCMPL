@@ -5,7 +5,7 @@
 <section id="content">
         <div class="content">
             <div class="row">
-                <h1 class="text-center">Conferencias</h1>
+                <h1 class="text-center">Servicios</h1>
             </div>
             <form class="form-horizontal" method="post">
             {{ csrf_field() }}

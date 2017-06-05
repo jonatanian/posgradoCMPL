@@ -130,6 +130,16 @@ Route::group(['prefix' => 'servicios'], function () {
     Route::get('/eliminar/{id}', 'ServiciosController@eliminar');
 });
 
+Route::group(['prefix' => 'direccion_cmpl'], function () {
+    Route::get('/', 'DireccionesCmplController@index');
+    Route::get('/agregar', 'DireccionesCmplController@agregar');
+    Route::get('/{id}', 'DireccionesCmplController@detalles');
+    Route::post('/agregar', 'DireccionesCmplController@crear');
+    Route::get('/editar/{id}','DireccionesCmplController@editar');
+    Route::post('/editar/{id}','DireccionesCmplController@actualizar');
+    Route::get('/eliminar/{id}', 'DireccionesCmplController@eliminar');
+});
+
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
