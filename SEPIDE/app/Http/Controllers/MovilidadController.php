@@ -94,9 +94,6 @@ class MovilidadController extends Controller
                 $movilidad->fecha_termino = $data['fecha_termino'];
             $movilidad->alcance = $data['alcance'];
             $movilidad->institucion_destino = $data['institucion_destino'];
-
-            $invest = Investigador::where('user_id',Auth::id())->first();
-            $movilidad->creador_id = $invest->id;
             $movilidad->save();
 
             return redirect('/movilidad')->with('success','La movilidad se modificó de forma exitosa');

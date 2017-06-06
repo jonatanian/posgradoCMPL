@@ -59,7 +59,7 @@
                 <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                      <label for="alcance" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Registro:</label>
                      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                        $servicio->tipo_registro
+                        {{$servicio->tipo_registro}}
                      </div>
                  </div>
                 @if($servicio->tipo_registro == "otro")
@@ -110,9 +110,11 @@
                      <label for="estatus" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Asistentes:</label>
                      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
                          <ul>
-                         @foreach(explode(',',$servicio->asistentes) as $asistente)
-                            <li>{{$asistente}}</li>
-                        @endforeach
+                        @if(!empty($servicio->asistentes))
+                             @foreach(explode(',',$servicio->asistentes) as $asistente)
+                                <li>{{$asistente}}</li>
+                            @endforeach
+                        @endif
                         </ul>
                      </div>
                  </div>

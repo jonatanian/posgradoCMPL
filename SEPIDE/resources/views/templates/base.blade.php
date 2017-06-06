@@ -213,7 +213,7 @@
               </li>
 
               <li>
-                <a href="">
+                <a href="{{ url('/direccion_institucional') }}">
                   <span class="glyphicon glyphicon-bookmark"></span>
                   <span class="sidebar-title">Dirección de tesis institucional</span>
                 </a>

@@ -140,6 +140,16 @@ Route::group(['prefix' => 'direccion_cmpl'], function () {
     Route::get('/eliminar/{id}', 'DireccionesCmplController@eliminar');
 });
 
+Route::group(['prefix' => 'direccion_institucional'], function () {
+    Route::get('/', 'DireccionesInstitucionalesController@index');
+    Route::get('/agregar', 'DireccionesInstitucionalesController@agregar');
+    Route::get('/{id}', 'DireccionesInstitucionalesController@detalles');
+    Route::post('/agregar', 'DireccionesInstitucionalesController@crear');
+    Route::get('/editar/{id}','DireccionesInstitucionalesController@editar');
+    Route::post('/editar/{id}','DireccionesInstitucionalesController@actualizar');
+    Route::get('/eliminar/{id}', 'DireccionesInstitucionalesController@eliminar');
+});
+
 Route::auth();
 
 Route::get('/home', 'HomeController@index');

@@ -5,43 +5,48 @@
 <section id="content">
         <div class="content">
             <div class="row">
-                <h1 class="text-center">Dirección CMP+L</h1>
+                <h1 class="text-center">Dirección institucional</h1>
             </div>
             <form class="form-horizontal" method="post">
             {{ csrf_field() }}
 
                  <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                     <label for="alcance" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Programa:</label>
+                     <label for="participacion" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Unidad politécnica:</label>
+                     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                         <input type="text" name="unidad" class="form-control disabled" placeholder="unidad" value="{{$direccion->unidad}}">
+                     </div>
+                 </div>
+
+
+                 <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                     <label for="alcance" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Nivel:</label>
                      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                        @if($direccion->programa == "Maestría en Ingeniería en P + L")
-                            <select name="programa" class="form-control">
+                        @if($direccion->nivel =="Superior")
+                            <select name="nivel" class="form-control disabled">
                                   <option value="">&nbsp;</option>
-                                  <option value="Maestría en Ingeniería en P + L" selected>Maestría en Ingeniería en P + L</option>
-                                  <option value="Doctorado en Energía">Doctorado en Energía</option>
-                                  <option value="Maestría en Energía">Maestría en Energía</option>
+                                  <option value="Superior" selected>Superior</option>
+                                  <option value="Posgrado">Posgrado</option>
                             </select>
-                        @elseif($direccion->programa == "Doctorado en Energía")
-                            <select name="programa" class="form-control">
+                        @elseif($direccion->nivel == "Posgrado")
+                            <select name="nivel" class="form-control">
                                   <option value="">&nbsp;</option>
-                                  <option value="Maestría en Ingeniería en P + L">Maestría en Ingeniería en P + L</option>
-                                  <option value="Doctorado en Energía" selected>Doctorado en Energía</option>
-                                  <option value="Maestría en Energía">Maestría en Energía</option>
-                            </select>
-                        @elseif($direccion->programa == "Maestría en Energía")
-                            <select name="programa" class="form-control">
-                                  <option value="">&nbsp;</option>
-                                  <option value="Maestría en Ingeniería en P + L">Maestría en Ingeniería en P + L</option>
-                                  <option value="Doctorado en Energía">Doctorado en Energía</option>
-                                  <option value="Maestría en Energía" selected>Maestría en Energía</option>
+                                  <option value="Superior">Superior</option>
+                                  <option value="Posgrado" selected>Posgrado</option>
                             </select>
                         @else
-                            <select name="programa" class="form-control">
+                            <select name="nivel" class="form-control">
                                   <option value="">&nbsp;</option>
-                                  <option value="Maestría en Ingeniería en P + L">Maestría en Ingeniería en P + L</option>
-                                  <option value="Doctorado en Energía">Doctorado en Energía</option>
-                                  <option value="Maestría en Energía">Maestría en Energía</option>
+                                  <option value="Superior">Superior</option>
+                                  <option value="Posgrado">Posgrado</option>
                             </select>
                         @endif
+                     </div>
+                 </div>
+
+                <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                     <label for="participacion" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Programa:</label>
+                        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                         <input type="text" name="programa" class="form-control disabled" placeholder="Programa" value="{{$direccion->programa}}">
                      </div>
                  </div>
 
@@ -82,27 +87,9 @@
                  </div>
 
                  <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                     <label for="alcance" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">LGAC:</label>
-                     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                        @if($direccion->lgac == "Prevención y control de la contaminación")
-                            <select name="lgac" class="form-control">
-                                  <option value="">&nbsp;</option>
-                                  <option value="Prevención y control de la contaminación" selected>Prevención y control de la contaminación</option>
-                                  <option value="Energía">Energía</option>
-                            </select>
-                        @elseif($direccion->lgac == "Energía")
-                            <select name="lgac" class="form-control">
-                                  <option value="">&nbsp;</option>
-                                  <option value="Prevención y control de la contaminación">Prevención y control de la contaminación</option>
-                                  <option value="Energía" selected>Energía</option>
-                            </select>
-                        @else
-                            <select name="lgac" class="form-control">
-                                  <option value="">&nbsp;</option>
-                                  <option value="Prevención y control de la contaminación">Prevención y control de la contaminación</option>
-                                  <option value="Energía">Energía</option>
-                            </select>
-                        @endif
+                     <label for="participacion" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">LGAC:</label>
+                        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                         <input type="text" name="lgac" class="form-control disabled" placeholder="lgac" value="{{$direccion->lgac}}">
                      </div>
                  </div>
 

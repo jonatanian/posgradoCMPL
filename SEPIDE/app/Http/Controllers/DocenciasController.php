@@ -163,7 +163,6 @@ class DocenciasController extends Controller
             $docencia->tipo_alcance = $data['tipo_alcance'];
             $docencia->asignaturas = $data['asignaturas'];
             $invest = Investigador::where('user_id',Auth::id())->first();
-            $docencia->creador_id = $invest->id;
             $docencia->save();
 
             if(isset($data['nivel1'])){

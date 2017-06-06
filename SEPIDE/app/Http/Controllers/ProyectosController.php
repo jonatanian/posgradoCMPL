@@ -85,12 +85,14 @@ class ProyectosController extends Controller
             $proyecto->creador_id = $invest->id;
             $proyecto->save();
 
-            foreach($data['investigadores'] as $investigador){
-                $inv_pro = new Investigador_indicador();
-                $inv_pro->indicador = 2; //Id del indicador Proyectos I+D+i
-                $inv_pro->investigador_id = $investigador;
-                $inv_pro->indicador_id = $proyecto->id;
-                $inv_pro->save();
+            if(isset($data['investigadores'])){
+                foreach($data['investigadores'] as $investigador){
+                    $inv_pro = new Investigador_indicador();
+                    $inv_pro->indicador = 2; //Id del indicador Proyectos I+D+i
+                    $inv_pro->investigador_id = $investigador;
+                    $inv_pro->indicador_id = $proyecto->id;
+                    $inv_pro->save();
+                }
             }
 
             $estudiantes = explode(",",$data['estudiantes']);
@@ -152,17 +154,17 @@ class ProyectosController extends Controller
             $proyecto->monto_p3 = $data['monto_p3'];
             $proyecto->monto_p5 = $data['monto_p5'];
             $proyecto->estimulos = $data['estimulos'];
-            $invest = Investigador::where('user_id',Auth::id())->first();
-            $proyecto->creador_id = $invest->id;
             $proyecto->save();
 
             Investigador_indicador::where('indicador_id',$id)->where('indicador',2)->forceDelete();
-            foreach($data['investigadores'] as $investigador){
-                $inv_pro = new Investigador_indicador();
-                $inv_pro->indicador = 2; //Id del indicador Proyectos I+D+i
-                $inv_pro->investigador_id = $investigador;
-                $inv_pro->indicador_id = $proyecto->id;
-                $inv_pro->save();
+            if(isset($data['investigadores'])){
+                foreach($data['investigadores'] as $investigador){
+                    $inv_pro = new Investigador_indicador();
+                    $inv_pro->indicador = 2; //Id del indicador Proyectos I+D+i
+                    $inv_pro->investigador_id = $investigador;
+                    $inv_pro->indicador_id = $proyecto->id;
+                    $inv_pro->save();
+                }
             }
             Estudiante_indicador::where('indicador_id',$id)->where('indicador',2)->forceDelete();
             $estudiantes = explode(",",$data['estudiantes']);

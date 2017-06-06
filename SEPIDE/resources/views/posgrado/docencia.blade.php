@@ -64,7 +64,7 @@
                                     <li><a href="{{url('docencias/'.$docencia->id)}}">Detalles</a></li>
                                     <li><a href="{{url('docencias/editar/'.$docencia->id)}}">Editar</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li class="alert-danger"><a href="{{url('patentes/eliminar/'.$docencia->id)}}"><span class="glyphicon glyphicon-remove red" aria-hidden="true"></span>Eliminar</a></li>
+                                    <li class="alert-danger"><a href="{{url('docencias/eliminar/'.$docencia->id)}}"><span class="glyphicon glyphicon-remove red" aria-hidden="true"></span>Eliminar</a></li>
                                 </ul>
                             </div>
                         </td>

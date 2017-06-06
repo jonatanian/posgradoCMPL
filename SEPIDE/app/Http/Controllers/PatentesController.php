@@ -70,12 +70,14 @@ class PatentesController extends Controller
             $patente->creador_id = $invest->id;
             $patente->save();
 
-            foreach($data['investigadores'] as $investigador){
-                $inv_pro = new Investigador_indicador();
-                $inv_pro->indicador = 5; //Id del indicador Proyectos I+D+i
-                $inv_pro->investigador_id = $investigador;
-                $inv_pro->indicador_id = $patente->id;
-                $inv_pro->save();
+            if(isset($data['investigadores'])){
+                foreach($data['investigadores'] as $investigador){
+                    $inv_pro = new Investigador_indicador();
+                    $inv_pro->indicador = 5; //Id del indicador Proyectos I+D+i
+                    $inv_pro->investigador_id = $investigador;
+                    $inv_pro->indicador_id = $patente->id;
+                    $inv_pro->save();
+                }
             }
 
             return redirect('/patentes')->with('success','La patente se creó de forma exitosa');
@@ -109,20 +111,18 @@ class PatentesController extends Controller
             if(!empty($data['fecha_notificacion']))
                 $patente->fecha_notificacion = $data['fecha_notificacion'];
             $patente->registro = $data['registro'];
-            $invest = Investigador::where('user_id',Auth::id())->first();
-            $patente->creador_id = $invest->id;
             $patente->save();
 
             Investigador_indicador::where('indicador_id',$id)->where('indicador',5)->forceDelete();
-
-            foreach($data['investigadores'] as $investigador){
-                $inv_pro = new Investigador_indicador();
-                $inv_pro->indicador = 5; //Id del indicador Proyectos I+D+i
-                $inv_pro->investigador_id = $investigador;
-                $inv_pro->indicador_id = $patente->id;
-                $inv_pro->save();
+            if(isset($data['investigadores'])){
+                foreach($data['investigadores'] as $investigador){
+                    $inv_pro = new Investigador_indicador();
+                    $inv_pro->indicador = 5; //Id del indicador Proyectos I+D+i
+                    $inv_pro->investigador_id = $investigador;
+                    $inv_pro->indicador_id = $patente->id;
+                    $inv_pro->save();
+                }
             }
-
             return redirect('/patentes')->with('success','La patente se actualizó de forma exitosa');
         }catch(Exception $e){
             return redirect('/patentes')->with('error','Error en el registro, vuelva a intentar');

@@ -79,6 +79,7 @@
                     <span class="input-group-addon">$</span>
                     <input type="text" class="form-control" name="monto" aria-label="Amount (to the nearest dollar)" placeholder="Monto"> 
                 </div>
+                </div>
 
                  <div class="form-group">
                      <div class="col-xs-10">

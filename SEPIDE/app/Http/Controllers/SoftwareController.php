@@ -95,9 +95,6 @@ class SoftwareController extends Controller
             if(!empty($data['fecha_aprobacion']))
                 $software->fecha_aprobacion = $data['fecha_aprobacion'];
             $software->area_aplicacion = $data['area_aplicacion'];
-
-            $invest = Investigador::where('user_id',Auth::id())->first();
-            $software->creador_id = $invest->id;
             $software->save();
             return redirect('/software')->with('success','El software se modificó de forma exitosa');
         }catch(Exception $e){

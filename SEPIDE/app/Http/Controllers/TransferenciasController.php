@@ -96,8 +96,6 @@ class TransferenciasController extends Controller
             
             $transferencia->receptor = $data['receptor'];
             $transferencia->monto = $data['monto'];
-            $invest = Investigador::where('user_id',Auth::id())->first();
-            $transferencia->creador_id = $invest->id;
             $transferencia->save();
             return redirect('/transferencias')->with('success','La transferencia se modificó de forma exitosa');
         }catch(Exception $e){

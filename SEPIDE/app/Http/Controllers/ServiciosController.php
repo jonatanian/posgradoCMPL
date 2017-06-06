@@ -71,30 +71,33 @@ class ServiciosController extends Controller
             if(!empty($data['otro_registro']))
                 $servicio->otro_registro = $data['otro_registro'];
             $servicio->registro = $data['registro'];
-            $servicio->asistentes = $data['asistentes'];
+            if(!empty($data['asistentes']))
+                $servicio->asistentes = $data['asistentes'];
             $servicio->costo = $data['costo'];
 
             $invest = Investigador::where('user_id',Auth::id())->first();
             $servicio->creador_id = $invest->id;
             $servicio->save();
 
-            foreach($data['investigadores'] as $investigador){
-                $inv_pro = new Investigador_indicador();
-                $inv_pro->indicador = 10; //Id del indicador Proyectos I+D+i
-                $inv_pro->investigador_id = $investigador;
-                $inv_pro->indicador_id = $servicio->id;
-                $inv_pro->save();
+            if(isset($data['investigadores'])){
+                foreach($data['investigadores'] as $investigador){
+                    $inv_pro = new Investigador_indicador();
+                    $inv_pro->indicador = 10; //Id del indicador Proyectos I+D+i
+                    $inv_pro->investigador_id = $investigador;
+                    $inv_pro->indicador_id = $servicio->id;
+                    $inv_pro->save();
+                }
             }
-
-            $estudiantes = explode(",",$data['estudiantes']);
-            foreach($estudiantes as $estudiante){
-                $est_ind = new Estudiante_indicador();
-                $est_ind->estudiante = $estudiante;
-                $est_ind->indicador = 10;
-                $est_ind->indicador_id = $servicio->id;
-                $est_ind->save();
+            if(!empty($data['estudiantes'])){
+                $estudiantes = explode(",",$data['estudiantes']);
+                foreach($estudiantes as $estudiante){
+                    $est_ind = new Estudiante_indicador();
+                    $est_ind->estudiante = $estudiante;
+                    $est_ind->indicador = 10;
+                    $est_ind->indicador_id = $servicio->id;
+                    $est_ind->save();
+                }
             }
-
             return redirect('/servicios')->with('success','El servicio se creo de forma exitosa');
         }catch(Exception $e){
             return redirect('/servicios')->with('error','Error en el registro, vuelva a intentar');
@@ -138,26 +141,26 @@ class ServiciosController extends Controller
             $servicio->asistentes = $data['asistentes'];
             $servicio->costo = $data['costo'];
 
-            $invest = Investigador::where('user_id',Auth::id())->first();
-            $servicio->creador_id = $invest->id;
-            $servicio->save();
-
             Investigador_indicador::where('indicador_id',$id)->where('indicador',10)->forceDelete();
-            foreach($data['investigadores'] as $investigador){
-                $inv_pro = new Investigador_indicador();
-                $inv_pro->indicador = 10; //Id del indicador Proyectos I+D+i
-                $inv_pro->investigador_id = $investigador;
-                $inv_pro->indicador_id = $servicio->id;
-                $inv_pro->save();
+            if(isset($data['investigadores'])){
+                foreach($data['investigadores'] as $investigador){
+                    $inv_pro = new Investigador_indicador();
+                    $inv_pro->indicador = 10; //Id del indicador Proyectos I+D+i
+                    $inv_pro->investigador_id = $investigador;
+                    $inv_pro->indicador_id = $servicio->id;
+                    $inv_pro->save();
+                }
             }
             Estudiante_indicador::where('indicador_id',$id)->where('indicador',10)->forceDelete();
-            $estudiantes = explode(",",$data['estudiantes']);
-            foreach($estudiantes as $estudiante){
-                $est_ind = new Estudiante_indicador();
-                $est_ind->estudiante = $estudiante;
-                $est_ind->indicador = 10;
-                $est_ind->indicador_id = $servicio->id;
-                $est_ind->save();
+            if(!empty($data['estudiantes'])){
+                $estudiantes = explode(",",$data['estudiantes']);
+                foreach($estudiantes as $estudiante){
+                    $est_ind = new Estudiante_indicador();
+                    $est_ind->estudiante = $estudiante;
+                    $est_ind->indicador = 10;
+                    $est_ind->indicador_id = $servicio->id;
+                    $est_ind->save();
+                }
             }
 
             return redirect('/servicios')->with('success','El servicio se editó de forma exitosa');

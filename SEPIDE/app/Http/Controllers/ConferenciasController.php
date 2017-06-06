@@ -70,14 +70,15 @@ class ConferenciasController extends Controller
             $conferencia->creador_id = $invest->id;
             $conferencia->save();
 
-            foreach($data['investigadores'] as $investigador){
-                $inv_pro = new Investigador_indicador();
-                $inv_pro->indicador = 7; //Id del indicador Proyectos I+D+i
-                $inv_pro->investigador_id = $investigador;
-                $inv_pro->indicador_id = $conferencia->id;
-                $inv_pro->save();
+            if(isset($data['investigadores'])){
+                foreach($data['investigadores'] as $investigador){
+                    $inv_pro = new Investigador_indicador();
+                    $inv_pro->indicador = 7; //Id del indicador Proyectos I+D+i
+                    $inv_pro->investigador_id = $investigador;
+                    $inv_pro->indicador_id = $conferencia->id;
+                    $inv_pro->save();
+                }
             }
-
             $estudiantes = explode(",",$data['estudiantes']);
             foreach($estudiantes as $estudiante){
                 $est_ind = new Estudiante_indicador();
@@ -122,19 +123,17 @@ class ConferenciasController extends Controller
             $conferencia->alcance = $data['alcance'];
             $conferencia->tema_participacion = $data['tema_participacion'];
             $conferencia->nombre_programa = $data['nombre_programa'];
-
-            $invest = Investigador::where('user_id',Auth::id())->first();
-            $conferencia->creador_id = $invest->id;
             $conferencia->save();
 
             Investigador_indicador::where('indicador_id',$id)->where('indicador',7)->forceDelete();
-
-            foreach($data['investigadores'] as $investigador){
-                $inv_pro = new Investigador_indicador();
-                $inv_pro->indicador = 7; //Id del indicador Proyectos I+D+i
-                $inv_pro->investigador_id = $investigador;
-                $inv_pro->indicador_id = $conferencia->id;
-                $inv_pro->save();
+            if(isset($data['investigadores'])){
+                foreach($data['investigadores'] as $investigador){
+                    $inv_pro = new Investigador_indicador();
+                    $inv_pro->indicador = 7; //Id del indicador Proyectos I+D+i
+                    $inv_pro->investigador_id = $investigador;
+                    $inv_pro->indicador_id = $conferencia->id;
+                    $inv_pro->save();
+                }
             }
 
             Estudiante_indicador::where('indicador_id',$id)->where('indicador',7)->forceDelete();

@@ -73,12 +73,14 @@ class CongresosController extends Controller
             $congreso->creador_id = $invest->id;
             $congreso->save();
 
-            foreach($data['investigadores'] as $investigador){
-                $inv_pro = new Investigador_indicador();
-                $inv_pro->indicador = 4; //Id del indicador Proyectos I+D+i
-                $inv_pro->investigador_id = $investigador;
-                $inv_pro->indicador_id = $congreso->id;
-                $inv_pro->save();
+            if(isset($data['investigadores'])){
+                foreach($data['investigadores'] as $investigador){
+                    $inv_pro = new Investigador_indicador();
+                    $inv_pro->indicador = 4; //Id del indicador Proyectos I+D+i
+                    $inv_pro->investigador_id = $investigador;
+                    $inv_pro->indicador_id = $congreso->id;
+                    $inv_pro->save();
+                }
             }
 
             $estudiantes = explode(",",$data['estudiantes']);
@@ -128,18 +130,17 @@ class CongresosController extends Controller
             $congreso->tipo_registro = $data['tipo_registro'];
             $congreso->registro = $data['registro'];
             $congreso->otro = $data['otro'];
-
-            $invest = Investigador::where('user_id',Auth::id())->first();
-            $congreso->creador_id = $invest->id;
             $congreso->save();
 
             Investigador_indicador::where('indicador_id',$id)->where('indicador',4)->forceDelete();
-            foreach($data['investigadores'] as $investigador){
-                $inv_pro = new Investigador_indicador();
-                $inv_pro->indicador = 4; //Id del indicador Proyectos I+D+i
-                $inv_pro->investigador_id = $investigador;
-                $inv_pro->indicador_id = $congreso->id;
-                $inv_pro->save();
+            if(isset($data['investigadores'])){
+                foreach($data['investigadores'] as $investigador){
+                    $inv_pro = new Investigador_indicador();
+                    $inv_pro->indicador = 4; //Id del indicador Proyectos I+D+i
+                    $inv_pro->investigador_id = $investigador;
+                    $inv_pro->indicador_id = $congreso->id;
+                    $inv_pro->save();
+                }
             }
             Estudiante_indicador::where('indicador_id',$id)->where('indicador',4)->forceDelete();
             $estudiantes = explode(",",$data['estudiantes']);
