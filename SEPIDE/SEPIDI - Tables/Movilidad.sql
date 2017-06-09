@@ -14,6 +14,7 @@ GO
 CREATE TABLE [dbo].[Movilidad](
 	[id] [int] IDENTITY(1,1) NOT NULL,
 	[tipo] [varchar](50) NULL,
+	[alumno] [varchar](100) NULL,
 	[nombre_programa] [varchar](150) NULL,
 	[fecha_inicio] [date] NULL,
 	[fecha_termino] [date] NULL,

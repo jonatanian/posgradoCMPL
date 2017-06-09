@@ -206,16 +206,9 @@
               </li>
 
               <li>
-                <a href="{{ url('/direccion_cmpl') }}">
+                <a href="{{ url('/direccion') }}">
                   <span class="glyphicon glyphicon-book"></span>
-                  <span class="sidebar-title">Dirección de tesis CMP+L</span>
-                </a>
-              </li>
-
-              <li>
-                <a href="{{ url('/direccion_institucional') }}">
-                  <span class="glyphicon glyphicon-bookmark"></span>
-                  <span class="sidebar-title">Dirección de tesis institucional</span>
+                  <span class="sidebar-title">Dirección de tesis</span>
                 </a>
               </li>
               

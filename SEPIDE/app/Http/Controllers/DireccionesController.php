@@ -11,9 +11,9 @@ use App\Users;
 use App\Conferencia;
 use App\Investigador_indicador;
 use App\Estudiante_indicador;
-use App\Direccion_institucional;
+use App\Direccion;
 
-class DireccionesInstitucionalesController extends Controller
+class DireccionesController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -43,14 +43,14 @@ class DireccionesInstitucionalesController extends Controller
     public function index()
     {
         $invest = $this->getUser();
-        $direcciones = Direccion_institucional::where('creador_id',$invest['id'])->get();
-        return view('posgrado.direccion_institucional', array('investigador'=>$this->getUser(), 
+        $direcciones = Direccion::where('creador_id',$invest['id'])->get();
+        return view('posgrado.direcciones', array('investigador'=>$this->getUser(), 
                                                 'direcciones'=>$direcciones));
     }
 
     public function agregar(){
          $investigadores = Investigador::all();
-        return view('posgrado.agregar_direccion_institucional', array('investigador'=>$this->getUser(),
+        return view('posgrado.agregar_direccion', array('investigador'=>$this->getUser(),
                                                         'investigadores'=>$investigadores,
                                                         ));
     }
@@ -58,13 +58,20 @@ class DireccionesInstitucionalesController extends Controller
     public function crear(Request $request){
         $data = $request->all();
         try{
-            $direccion = new Direccion_institucional();
+            $direccion = new Direccion();
+            $direccion->tipo = $data['tipo'];
             $direccion->unidad = $data['unidad'];
             $direccion->nivel = $data['nivel'];
-            $direccion->programa = $data['programa'];
+            if($data['tipo']=="CMP+L"){
+                $direccion->programa = $data['programa_cmpl'];
+                $direccion->lgac = $data['lgac_cmpl'];
+            }
+            elseif($data['tipo']=="Institucional"){
+                $direccion->programa = $data['programa_ins'];
+                $direccion->lgac = $data['lgac_ins'];
+            }
             $direccion->alumno = $data['alumno'];
             $direccion->titulo= $data['titulo'];
-            $direccion->lgac = $data['lgac'];
             $direccion->estatus = $data['estatus'];
             if(!empty($data['fecha_limite']))
                 $direccion->fecha_limite = $data['fecha_limite'];
@@ -75,7 +82,7 @@ class DireccionesInstitucionalesController extends Controller
             if(isset($data['investigadores'])){
                 foreach($data['investigadores'] as $investigador){
                     $inv_pro = new Investigador_indicador();
-                    $inv_pro->indicador = 13; //Id del indicador Proyectos I+D+i
+                    $inv_pro->indicador = 14; //Id del indicador Proyectos I+D+i
                     $inv_pro->investigador_id = $investigador;
                     $inv_pro->indicador_id = $direccion->id;
                     $inv_pro->save();
@@ -83,17 +90,17 @@ class DireccionesInstitucionalesController extends Controller
             }
 
 
-            return redirect('/direccion_institucional')->with('success','La dirección se creo de forma exitosa');
+            return redirect('/direccion')->with('success','La dirección se creo de forma exitosa');
         }catch(Exception $e){
-            return redirect('/direccion_institucional')->with('error','Error en el registro, vuelva a intentar');
+            return redirect('/direccion')->with('error','Error en el registro, vuelva a intentar');
         }
     }
 
     public function editar($id = NULL){
-        $direccion = Direccion_institucional::find($id);
-        $inv_ind = Investigador_indicador::where('indicador_id', $id)->where('indicador',13)->get();
+        $direccion = Direccion::find($id);
+        $inv_ind = Investigador_indicador::where('indicador_id', $id)->where('indicador',14)->get();
         $investigadores = Investigador::all();
-        return view('posgrado.editar_direccion_institucional', array('investigador'=>$this->getUser(),
+        return view('posgrado.editar_direccion', array('investigador'=>$this->getUser(),
                                                         'direccion' =>$direccion,
                                                         'inv_ind' => $inv_ind,
                                                         'investigadores'=>$investigadores,
@@ -104,40 +111,47 @@ class DireccionesInstitucionalesController extends Controller
     public function actualizar(Request $request, $id){
         $data = $request->all();
         try{
-            $direccion = Direccion_institucional::find($id);
+            $direccion = Direccion::find($id);
+            $direccion->tipo = $data['tipo'];
             $direccion->unidad = $data['unidad'];
             $direccion->nivel = $data['nivel'];
-            $direccion->programa = $data['programa'];
+            if($data['tipo']=="CMP+L"){
+                $direccion->programa = $data['programa_cmpl'];
+                $direccion->lgac = $data['lgac_cmpl'];
+            }
+            elseif($data['tipo']=="Institucional"){
+                $direccion->programa = $data['programa_ins'];
+                $direccion->lgac = $data['lgac_ins'];
+            }
             $direccion->alumno = $data['alumno'];
             $direccion->titulo= $data['titulo'];
-            $direccion->lgac = $data['lgac'];
             $direccion->estatus = $data['estatus'];
             if(!empty($data['fecha_limite']))
                 $direccion->fecha_limite = $data['fecha_limite'];
             $direccion->save();
 
-            Investigador_indicador::where('indicador_id',$id)->where('indicador',13)->forceDelete();
+            Investigador_indicador::where('indicador_id',$id)->where('indicador',14)->forceDelete();
 
             if(isset($data['investigadores'])){
                 foreach($data['investigadores'] as $investigador){
                     $inv_pro = new Investigador_indicador();
-                    $inv_pro->indicador = 13; //Id del indicador Proyectos I+D+i
+                    $inv_pro->indicador = 14; //Id del indicador Proyectos I+D+i
                     $inv_pro->investigador_id = $investigador;
                     $inv_pro->indicador_id = $direccion->id;
                     $inv_pro->save();
                 }
             }
-            return redirect('/direccion_institucional')->with('success','La dirección se creo de forma exitosa');
+            return redirect('/direccion')->with('success','La dirección se creo de forma exitosa');
         }catch(Exception $e){
-            return redirect('/direccion_institucional')->with('error','Error en el registro, vuelva a intentar');
+            return redirect('/direccion')->with('error','Error en el registro, vuelva a intentar');
         }
     }
 
     public function detalles($id = NULL){
-        $direccion = Direccion_institucional::find($id);
-        $inv_ind = Investigador_indicador::where('indicador_id', $id)->where('indicador',13)->get();
+        $direccion = Direccion::find($id);
+        $inv_ind = Investigador_indicador::where('indicador_id', $id)->where('indicador',14)->get();
         $investigadores = Investigador::all();
-        return view('posgrado.detalles_direccion_institucional', array('investigador'=>$this->getUser(),
+        return view('posgrado.detalles_direccion', array('investigador'=>$this->getUser(),
                                                         'direccion' =>$direccion,
                                                         'inv_ind' => $inv_ind,
                                                         'investigadores'=>$investigadores,
@@ -146,11 +160,11 @@ class DireccionesInstitucionalesController extends Controller
 
     public function eliminar($id=0){
         try{
-            Direccion_institucional::find($id)->forceDelete();
-            return redirect('/direccion_institucional')->with('success','La dirección se eliminó de forma exitosa');
+            Direccion::find($id)->forceDelete();
+            return redirect('/direccion')->with('success','La dirección se eliminó de forma exitosa');
         }
         catch(Exception $e){
-            return redirect('/direccion_institucional')->with('error','Error, vuelva a intentar');
+            return redirect('/direccion')->with('error','Error, vuelva a intentar');
         }
     }
 }

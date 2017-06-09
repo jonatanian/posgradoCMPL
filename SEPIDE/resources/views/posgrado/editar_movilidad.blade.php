@@ -34,6 +34,13 @@
                  </div>
 
                  <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                     <label for="nombrePrograma" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Nombre del alumno:</label>
+                        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                         <input type="text" name="alumno" class="form-control disabled" placeholder="Alumno" value="{{$movilidad->alumno}}">
+                     </div>
+                 </div>
+
+                 <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                      <label for="nombrePrograma" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Nombre del programa:</label>
                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
                          <input type="text" name="nombre_programa" class="form-control disabled" placeholder="Nombre del programa" value="{{$movilidad->nombre_programa}}">

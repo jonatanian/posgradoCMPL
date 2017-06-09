@@ -25,23 +25,25 @@
             <table class="table-striped">
                 <tr>
                     <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">Tipo</th>
+                    <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">Alumno</th>
                     <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">Nombre Programa</th>
                     <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha</th>
                     <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">Alcance</th>
-                    <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">Institución destino</th>
-                    <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">Acciones</th>
+                    <th class="col-xs-1 col-sm-1 col-md-1 col-lg-1">Institución destino</th>
+                    <th class="col-xs-1 col-sm-1 col-md-1 col-lg-1">Acciones</th>
                 </tr>
                 @foreach($movilidad as $mov)
                     <tr>
                         <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">{{$mov->tipo}}</td>
+                        <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">{{$mov->alumno}}</td>
                         <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">{{$mov->nombre_programa}}</td>
                         <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                             Fecha inicio: {{$mov->fecha_inicio}}<br>
                             Fecha término: {{$mov->fecha_termino}}
                         </td>
                         <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">{{$mov->alcance}}</td>
-                        <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">{{$mov->institucion_destino}}</td>
-                        <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        <td class="col-xs-1 col-sm-1 col-md-1 col-lg-1">{{$mov->institucion_destino}}</td>
+                        <td class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
                             <div class="btn-group">
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Acciones <span class="caret"></span>

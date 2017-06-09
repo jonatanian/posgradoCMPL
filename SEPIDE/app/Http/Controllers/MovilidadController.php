@@ -55,6 +55,7 @@ class MovilidadController extends Controller
         try{
             $movilidad = new Movilidad();
             $movilidad->tipo = $data['tipo'];
+            $movilidad->alumno = $data['alumno'];
             $movilidad->nombre_programa = $data['nombre_programa'];
             if(!empty($data['fecha_inicio']))
                 $movilidad->fecha_inicio = $data['fecha_inicio'];
@@ -87,6 +88,7 @@ class MovilidadController extends Controller
         try{
             $movilidad = Movilidad::find($id);
             $movilidad->tipo = $data['tipo'];
+            $movilidad->alumno = $data['alumno'];
             $movilidad->nombre_programa = $data['nombre_programa'];
             if(!empty($data['fecha_inicio']))
                 $movilidad->fecha_inicio = $data['fecha_inicio'];

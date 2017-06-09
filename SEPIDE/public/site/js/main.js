@@ -97,3 +97,27 @@ $("#elem_invitado").change(function(){
     $("#div_invitados").addClass("hidden");
   }
 });
+
+$("#elem_direccion").change(function(){
+  if($(this).val() == "CMP+L"){
+    $("#div_pro_cmpl").removeClass("hidden");
+    $("#div_lgac_cmpl").removeClass("hidden");
+    $("#div_dir").addClass("hidden");
+    $("#div_pro_ins").addClass("hidden");
+    $("#div_lgac_ins").addClass("hidden");
+  }
+  else if($(this).val() == "Institucional"){
+    $("#div_pro_cmpl").addClass("hidden");
+    $("#div_lgac_cmpl").addClass("hidden");
+    $("#div_dir").removeClass("hidden");
+    $("#div_pro_ins").removeClass("hidden");
+    $("#div_lgac_ins").removeClass("hidden");
+  }
+  else{
+    $("#div_pro_cmpl").addClass("hidden");
+    $("#div_dir").addClass("hidden");
+    $("#div_lgac_cmpl").addClass("hidden");
+    $("#div_pro_ins").addClass("hidden");
+    $("#div_lgac_ins").addClass("hidden");
+  }
+});
