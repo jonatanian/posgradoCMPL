@@ -71,6 +71,15 @@ $("#elem_reg").change(function(){
   }
 });
 
+$("#elem_financ").change(function(){
+  if($(this).val() == 0){
+    $("#div_otro").removeClass("hidden");
+  }
+  else{
+    $("#div_otro").addClass("hidden");
+  }
+});
+
 $("#elem_fin").change(function(){
   if($(this).val() == "otro"){
     $("#div_otro").removeClass("hidden");

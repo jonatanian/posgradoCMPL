@@ -22,6 +22,7 @@ use App\Adscripcion;
 use App\Grado;
 use App\Docencia;
 use App\Servicio;
+use App\Direccion;
 use App\Investigador_profesor_posgrado;
 use App\Profesor_posgrado;
 use App\Investigador_indicador;
@@ -87,6 +88,7 @@ class HomeController extends Controller
         $software = Software::all();
         $servicios = Servicio::all();
         $movilidad = Movilidad::all();
+        $direcciones = Direccion::all();
         $prof_ads = Profesor_adscrito::all();
         $adscripciones = Adscripcion_investigador::all();
         $prof_pos = Investigador_profesor_posgrado::all();
@@ -105,6 +107,7 @@ class HomeController extends Controller
             'software' => $software,
             'servicios' => $servicios,
             'movilidad' => $movilidad,
+            'direcciones' => $direcciones,
             'prof_ads' => $prof_ads,
             'adscripciones' => $adscripciones,
             'prof_pos' => $prof_pos,
@@ -272,7 +275,7 @@ class HomeController extends Controller
         }
             
 
-        return redirect('/principal');
+        return redirect('/perfil');
     }
 
     public function perfil(){
@@ -287,6 +290,7 @@ class HomeController extends Controller
         $software = Software::where('creador_id', $invest->id)->get();
         $servicios = Servicio::where('creador_id', $invest->id)->get();
         $movilidad = Movilidad::where('creador_id', $invest->id)->get();
+        $direcciones = Direccion::where('creador_id', $invest->id)->get();
         $prof_ads = Profesor_adscrito::where('investigador_id', $invest->id)->first();
         $adscripciones = Adscripcion_investigador::where('investigador_id',$invest->id)->get();
         $prof_pos = Investigador_profesor_posgrado::where('investigador_id', $invest->id)->get();
@@ -305,6 +309,7 @@ class HomeController extends Controller
             'software' => $software,
             'servicios' => $servicios,
             'movilidad' => $movilidad,
+            'direcciones' => $direcciones,
             'prof_ads' => $prof_ads,
             'adscripciones' => $adscripciones,
             'prof_pos' => $prof_pos,

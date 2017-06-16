@@ -99,11 +99,7 @@
                      </div>
                  </div>
             </div>
-                 <div class="form-group">
-                     <div class="col-xs-10">
-                         <button type="submit" class="btn btn-primary">Guardar</button>
-                     </div>
-                 </div>
+
                 
             </form>
             

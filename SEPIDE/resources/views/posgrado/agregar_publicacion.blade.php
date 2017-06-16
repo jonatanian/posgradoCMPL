@@ -100,7 +100,7 @@
                  </div>
 
                 <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                     <label for="estatus" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Participantes:</label>
+                     <label for="estatus" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Otros autores (docentes):</label>
                      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
                          <select id="elem_estatus" name="investigadores[]" class="form-control" multiple>
                               @foreach($investigadores as $inv)
@@ -111,7 +111,7 @@
                  </div>
 
                 <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                     <label for="estatus" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Estudiantes:</label>
+                     <label for="estatus" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Otros autores (estudiantes):</label>
                      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
                          <input type="text" name="estudiantes" data-role="tagsinput" />
                      </div>

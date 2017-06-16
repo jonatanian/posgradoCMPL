@@ -3,12 +3,42 @@
 @section('content')
     <section id="content">
         <div class="content">
+            <div class="text-right">
+                <a href="{{url('/edit_perfil/'.$investigador['id'])}}" class="btn btn-success">Modificar perfil</a>
+                &nbsp;
+                <br />
+            </div>
             <div class="row">
                 <h1 class="text-center">{{$investigador['grado']}} {{$investigador['nombre']}} {{$investigador['ap_paterno']}} {{$investigador['ap_materno']}}</h1><br>
                 <h2 class="text-center">I+D+i</h2>
             </div>
             <div class="row">
+                <h2 class="text-center">Adscripción al programa CMP+L</h2>
+                @foreach($adscripciones as $ads)
+                    <h3 class="text-center">{{$ads->adscripcion->nombre}}</h3>
+                @endforeach
+            </div>
+
+            <div class="row">
+            @if($prof_ads)
+                <h2 class="text-center">Profesor Adscrito</h2>
+                <h3 class="text-center">{{$prof_ads->profesor_adscrito}}</h3>
+            </div>
+            @endif
+            <div class="row">
+                <h2 class="text-center">Profesor Posgrado PNPC</h2>
+                @foreach($prof_pos as $prof)
+                    <h3 class="text-center">{{$prof->profesor_posgrado->nombre_posgrado}}</h3>
+                @endforeach
+            </div>
+            <hr>
+            <div class="row">
                 <h3>Proyectos:</h3>
+                <div class="text-right">
+                    <a href="{{url('/proyectos/agregar')}}" class="btn btn-success">Agregar proyecto</a>
+                    &nbsp;
+                    <br />
+                </div>
                 <table class="table-striped">
                     <tr>
                         <th class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Nombre</th>
@@ -57,9 +87,14 @@
                     @endforeach
                 </table>
             </div>
-
+            <hr>
             <div class="row">
                 <h3>Publicaciones:</h3>
+                <div class="text-right">
+                    <a href="{{url('/publicaciones/agregar')}}" class="btn btn-success">Agregar publicación</a>
+                    &nbsp;
+                    <br />
+                </div>
                 <table class="table-striped">
                     <tr>
                         <th class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Nombre</th>
@@ -108,9 +143,14 @@
                     @endforeach
                 </table>
             </div>
-
+            <hr>
             <div class="row">
                 <h3>Congresos:</h3>
+                <div class="text-right">
+                    <a href="{{url('/congresos/agregar')}}" class="btn btn-success">Agregar congreso</a>
+                    &nbsp;
+                    <br />
+                </div>
                 <table class="table-striped">
                     <tr>
                         <th class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Nombre</th>
@@ -159,9 +199,14 @@
                     @endforeach
                 </table>
             </div>
-
+            <hr>
             <div class="row">
                 <h3>Patentes:</h3>
+                <div class="text-right">
+                    <a href="{{url('/patentes/agregar')}}" class="btn btn-success">Agregar patente</a>
+                    &nbsp;
+                    <br />
+                </div>
                 <table class="table-striped">
                     <tr>
                         <th class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Nombre</th>
@@ -210,9 +255,14 @@
                     @endforeach
                 </table>
             </div>
-
+            <hr>
             <div class="row">
                 <h3>Transferencias de tecnología e innovación:</h3>
+                <div class="text-right">
+                    <a href="{{url('/transferencias/agregar')}}" class="btn btn-success">Agregar Transferencia</a>
+                    &nbsp;
+                    <br />
+                </div>
                 <table class="table-striped">
                     <tr>
                         <th class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Nombre</th>
@@ -242,9 +292,14 @@
                     @endforeach
                 </table>
             </div>
-
+            <hr>
             <div class="row">
                 <h3>Conferencias:</h3>
+                <div class="text-right">
+                    <a href="{{url('/conferencias/agregar')}}" class="btn btn-success">Agregar conferencia</a>
+                    &nbsp;
+                    <br />
+                </div>
                 <table class="table-striped">
                     <tr>
                         <th class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Nombre</th>
@@ -293,9 +348,14 @@
                     @endforeach
                 </table>
             </div>
-
+            <hr>
             <div class="row">
                 <h3>Docencias:</h3>
+                <div class="text-right">
+                    <a href="{{url('/docencias/agregar')}}" class="btn btn-success">Agregar Docencia</a>
+                    &nbsp;
+                    <br />
+                </div>
                 <table class="table-striped">
                     <tr>
                         <th class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Duración</th>
@@ -337,9 +397,14 @@
                     @endforeach
                 </table>
             </div>
-
+            <hr>
             <div class="row">
                 <h3>Software:</h3>
+                <div class="text-right">
+                    <a href="{{url('/software/agregar')}}" class="btn btn-success">Agregar software</a>
+                    &nbsp;
+                    <br />
+                </div>
                 <table class="table-striped">
                     <tr>
                         <th class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Descripción:</th>
@@ -371,9 +436,14 @@
                     @endforeach
                 </table>
             </div>
-
+            <hr>
             <div class="row">
                 <h3>Servicios:</h3>
+                <div class="text-right">
+                    <a href="{{url('/servicios/agregar')}}" class="btn btn-success">Agregar servicio</a>
+                    &nbsp;
+                    <br />
+                </div>
                 <table class="table-striped">
                     <tr>
                         <th class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Nombre</th>
@@ -422,9 +492,14 @@
                     @endforeach
                 </table>
             </div>
-
+            <hr>
             <div class="row">
                 <h3>Movilidad:</h3>
+                <div class="text-right">
+                    <a href="{{url('/movilidad/agregar')}}" class="btn btn-success">Agregar movilidad</a>
+                    &nbsp;
+                    <br />
+                </div>
                 <table class="table-striped">
                     <tr>
                         <th class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Nombre del programa:</th>
@@ -456,25 +531,44 @@
                     @endforeach
                 </table>
             </div>
-
+            <hr>
             <div class="row">
-                <h2 class="text-center">Adscripción al programa CMP+L</h2>
-                @foreach($adscripciones as $ads)
-                    <h3 class="text-center">{{$ads->adscripcion->nombre}}</h3>
-                @endforeach
-            </div>
-
-            <div class="row">
-            @if($prof_ads)
-                <h2 class="text-center">Profesor Adscrito</h2>
-                <h3 class="text-center">{{$prof_ads->profesor_adscrito}}</h3>
-            </div>
-            @endif
-            <div class="row">
-                <h2 class="text-center">Profesor Posgrado PNPC</h2>
-                @foreach($prof_pos as $prof)
-                    <h3 class="text-center">{{$prof->profesor_posgrado->nombre_posgrado}}</h3>
-                @endforeach
+                <h3>Direcciones de Tesis:</h3>
+                <div class="text-right">
+                    <a href="{{url('/direccion/agregar')}}" class="btn btn-success">Agregar dirección</a>
+                    &nbsp;
+                    <br />
+                </div>
+                <table class="table-striped">
+                    <tr>
+                        <th class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Tipo:</th>
+                        <th class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Alumno</th>
+                        <th class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Acciones</th>
+                    </tr>
+                    @foreach($direcciones as $direccion)
+                        <tr>
+                            <td class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            {{$direccion->tipo}}
+                            </td>
+                            <td class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            {{$direccion->alumno}}
+                            </td>
+                            <td class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                <div class="btn-group">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Acciones <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{url('direccion/'.$direccion->id)}}">Detalles</a></li>
+                                    <li><a href="{{url('direccion/editar/'.$direccion->id)}}">Editar</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li class="alert-danger"><a href="{{url('direccion/eliminar/'.$direccion->id)}}"><span class="glyphicon glyphicon-remove red" aria-hidden="true"></span>Eliminar</a></li>
+                                </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </table>
             </div>
         </div>
     </section>

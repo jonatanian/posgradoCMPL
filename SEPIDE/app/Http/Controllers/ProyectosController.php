@@ -76,11 +76,11 @@ class ProyectosController extends Controller
                 $proyecto->fecha_vigencia_fin = $data['fecha_vigencia_fin'];
             if(!empty($data['fecha_notificacion']))
                 $proyecto->fecha_notificacion = $data['fecha_notificacion'];
-            $proyecto->monto_total = $data['monto_total'];
-            $proyecto->monto_p2 = $data['monto_p2'];
-            $proyecto->monto_p3 = $data['monto_p3'];
-            $proyecto->monto_p5 = $data['monto_p5'];
-            $proyecto->estimulos = $data['estimulos'];
+            $proyecto->monto_total = tofloat($data['monto_total']);
+            $proyecto->monto_p2 = tofloat($data['monto_p2']);
+            $proyecto->monto_p3 = tofloat($data['monto_p3']);
+            $proyecto->monto_p5 = tofloat($data['monto_p5']);
+            $proyecto->estimulos = tofloat($data['estimulos']);
             $invest = Investigador::where('user_id',Auth::id())->first();
             $proyecto->creador_id = $invest->id;
             $proyecto->save();
@@ -149,11 +149,11 @@ class ProyectosController extends Controller
                 $proyecto->fecha_vigencia_fin = $data['fecha_vigencia_fin'];
             if(!empty($data['fecha_notificacion']))
                 $proyecto->fecha_notificacion = $data['fecha_notificacion'];
-            $proyecto->monto_total = $data['monto_total'];
-            $proyecto->monto_p2 = $data['monto_p2'];
-            $proyecto->monto_p3 = $data['monto_p3'];
-            $proyecto->monto_p5 = $data['monto_p5'];
-            $proyecto->estimulos = $data['estimulos'];
+            $proyecto->monto_total = tofloat($data['monto_total']);
+            $proyecto->monto_p2 = tofloat($data['monto_p2']);
+            $proyecto->monto_p3 = tofloat($data['monto_p3']);
+            $proyecto->monto_p5 = tofloat($data['monto_p5']);
+            $proyecto->estimulos = tofloat($data['estimulos']);
             $proyecto->save();
 
             Investigador_indicador::where('indicador_id',$id)->where('indicador',2)->forceDelete();
@@ -207,4 +207,20 @@ class ProyectosController extends Controller
             return redirect('/proyectos')->with('error','Erroro, vuelva a intentar');
         }
     }
+}
+
+function tofloat($num) {
+    $dotPos = strrpos($num, '.');
+    $commaPos = strrpos($num, ',');
+    $sep = (($dotPos > $commaPos) && $dotPos) ? $dotPos : 
+        ((($commaPos > $dotPos) && $commaPos) ? $commaPos : false);
+   
+    if (!$sep) {
+        return floatval(preg_replace("/[^0-9]/", "", $num));
+    } 
+
+    return floatval(
+        preg_replace("/[^0-9]/", "", substr($num, 0, $sep)) . '.' .
+        preg_replace("/[^0-9]/", "", substr($num, $sep+1, strlen($num)))
+    );
 }

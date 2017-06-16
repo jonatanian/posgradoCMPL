@@ -5,7 +5,7 @@
 <head>
   <!-- Meta, title, CSS, favicons, etc. -->
   <meta charset="utf-8">
-  <title>SEPIDE-CMPL | Instituto Politécnico Nacional</title>
+  <title>SEPIDI-CMPL | Instituto Politécnico Nacional</title>
   <meta name="keywords" content="SEPIDE-CMPL IPN" />
   <meta name="description" content="Centro Mexicano para la Producción más Limpia del Instituto Politécnico Nacional">
   <meta name="author" content="Castañeda Chavero Jonatan Ian">
@@ -296,8 +296,9 @@
 
 <!-- Validaciones de la vista -->
   <script type="text/javascript" src="{{URL::asset('site/js/main.js')}}"></script>
+  <script type="text/javascript" src="{{URL::asset('site/js/jquery.maskMoney.js')}}"></script>
 
- 
+ @yield('scripts')
 
   <script type="text/javascript">
   jQuery(document).ready(function() {
