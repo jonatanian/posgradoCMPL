@@ -112,21 +112,31 @@
                             <option value="">&nbsp;</option>
                               <option value="ISSN" selected>ISSN</option>
                               <option value="ISBN">ISBN</option>
+                              <option value="Ninguno">Ninguno</option>
                               <option value="otro">Otro...</option>
                         @elseif($congreso->tipo_registro == "ISBN")
                            <option value="">&nbsp;</option>
                               <option value="ISSN">ISSN</option>
                               <option value="ISBN" selected>ISBN</option>
+                              <option value="Ninguno">Ninguno</option>
+                              <option value="otro">Otro...</option>
+                        @elseif($congreso->tipo_registro == "Ninguno")
+                            <option value="">&nbsp;</option>
+                              <option value="ISSN">ISSN</option>
+                              <option value="ISBN">ISBN</option>
+                              <option value="Ninguno" selected>Ninguno</option>
                               <option value="otro">Otro...</option>
                         @elseif($congreso->tipo_registro == "otro")
                             <option value="">&nbsp;</option>
                               <option value="ISSN">ISSN</option>
                               <option value="ISBN">ISBN</option>
+                              <option value="Ninguno">Ninguno</option>
                               <option value="otro" selected>Otro...</option>
                         @else
                             <option value="">&nbsp;</option>
                               <option value="ISSN">ISSN</option>
                               <option value="ISBN">ISBN</option>
+                              <option value="Ninguno">Ninguno</option>
                               <option value="otro">Otro...</option>
                         @endif
                         </select>

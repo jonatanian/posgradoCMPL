@@ -62,6 +62,7 @@
                                   <option value="">&nbsp;</option>
                                   <option value="ISSN">ISSN</option>
                                   <option value="ISBN">ISBN</option>
+                                  <option value="Ninguno">Ninguno</option>
                                   <option value="otro">Otro...</option>
                             </select>
                      </div>

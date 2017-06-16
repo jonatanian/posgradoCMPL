@@ -117,7 +117,7 @@
                 <label for="inputName" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Monto de la transferencia:</label>
                     <div class="input-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <span class="input-group-addon">$</span>
-                    <input type="text" class="form-control" name="monto" aria-label="Amount (to the nearest dollar)" placeholder="Monto" value="{{$transferencia->monto}}"> 
+                    <input type="text" class="form-control" name="monto" id="monto" aria-label="Amount (to the nearest dollar)" placeholder="Monto" value="{{$transferencia->monto.'0'}}"> 
                 </div>
 
                  <div class="form-group">
@@ -132,4 +132,12 @@
 
     </section>
 
+@endsection
+@section('scripts')
+    <script>
+        $(function() {
+            $('#monto').maskMoney();
+
+        });
+    </script>
 @endsection

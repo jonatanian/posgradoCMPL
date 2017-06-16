@@ -64,7 +64,7 @@ class TransferenciasController extends Controller
                 $transferencia->fecha_termino = $data['fecha_termino'];
             
             $transferencia->receptor = $data['receptor'];
-            $transferencia->monto = $data['monto'];
+            $transferencia->monto = tofloat($data['monto']);
             $invest = Investigador::where('user_id',Auth::id())->first();
             $transferencia->creador_id = $invest->id;
             $transferencia->save();
@@ -95,7 +95,7 @@ class TransferenciasController extends Controller
                 $transferencia->fecha_termino = $data['fecha_termino'];
             
             $transferencia->receptor = $data['receptor'];
-            $transferencia->monto = $data['monto'];
+            $transferencia->monto = tofloat($data['monto']);
             $transferencia->save();
             return redirect('/transferencias')->with('success','La transferencia se modificó de forma exitosa');
         }catch(Exception $e){
@@ -122,4 +122,21 @@ class TransferenciasController extends Controller
             return redirect('/transferencias')->with('error','Error, vuelva a intentar');
         }
     }
+
+}
+
+function tofloat($num) {
+    $dotPos = strrpos($num, '.');
+    $commaPos = strrpos($num, ',');
+    $sep = (($dotPos > $commaPos) && $dotPos) ? $dotPos : 
+        ((($commaPos > $dotPos) && $commaPos) ? $commaPos : false);
+   
+    if (!$sep) {
+        return floatval(preg_replace("/[^0-9]/", "", $num));
+    } 
+
+    return floatval(
+        preg_replace("/[^0-9]/", "", substr($num, 0, $sep)) . '.' .
+        preg_replace("/[^0-9]/", "", substr($num, $sep+1, strlen($num)))
+    );
 }

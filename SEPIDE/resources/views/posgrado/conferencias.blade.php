@@ -27,7 +27,7 @@
                     <th class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Duración</th>
                     <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">Alcance</th>
                     <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">Tema de participación</th>
-                    <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">Nombre del programa</th>
+                    <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">Nombre</th>
                     <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">Acciones</th>
                 </tr>
                 @foreach($conferencias as $conferencia)

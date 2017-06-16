@@ -43,9 +43,9 @@
                  </div>
 
                 <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                     <label for="participacion" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Nombre del programa:</label>
+                     <label for="participacion" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Nombre:</label>
                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                         <input type="text" name="nombre_programa" class="form-control disabled" placeholder="Programa">
+                         <input type="text" name="nombre_programa" class="form-control disabled" placeholder="Nombre">
                      </div>
                  </div>
 
