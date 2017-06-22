@@ -182,31 +182,33 @@
         });
 
         $( "#btn-sub" ).click(function() {
-            total = $('#total').val().replace(',','');
-            total = total.replace(',','');
-            total = parseFloat(total.replace(',',''));
+            if($('#elem_estatus').val() == 'ap'){
+                total = $('#total').val().replace(',','');
+                total = total.replace(',','');
+                total = parseFloat(total.replace(',',''));
 
-            p2 = $('#p2').val().replace(',','');
-            p2 = p2.replace(',','');
-            p2 = parseFloat(p2.replace(',',''));
+                p2 = $('#p2').val().replace(',','');
+                p2 = p2.replace(',','');
+                p2 = parseFloat(p2.replace(',',''));
 
-            p3 = $('#p3').val().replace(',','');
-            p3 = p3.replace(',','');
-            p3 = parseFloat(p3.replace(',',''));
+                p3 = $('#p3').val().replace(',','');
+                p3 = p3.replace(',','');
+                p3 = parseFloat(p3.replace(',',''));
 
-            p5 = $('#p5').val().replace(',','');
-            p5 = p5.replace(',','');
-            p5 = parseFloat(p5.replace(',',''));
+                p5 = $('#p5').val().replace(',','');
+                p5 = p5.replace(',','');
+                p5 = parseFloat(p5.replace(',',''));
 
-            est = $('#est').val().replace(',','');
-            est = est.replace(',','');
-            est = parseFloat(est.replace(',',''));
+                est = $('#est').val().replace(',','');
+                est = est.replace(',','');
+                est = parseFloat(est.replace(',',''));
 
-            sub = p2 + p3 + p5 + est;
-            if(total != sub){
-                $("#total").css('background-color', '#EA5858');
-                alert('Los montos introducidos no coinciden con el Monto Financiado.');
-                event.preventDefault();
+                sub = p2 + p3 + p5 + est;
+                if(total != sub){
+                    $("#total").css('background-color', '#EA5858');
+                    alert('Los montos introducidos no coinciden con el Monto Financiado.');
+                    event.preventDefault();
+                }
             }
         });
 
