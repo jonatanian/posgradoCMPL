@@ -54,7 +54,7 @@
                      </div>
 
                     <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                         <label for="estatus" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Asistentes:</label>
+                         <label for="estatus" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Participantes:</label>
                          <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
                              <input type="text" name="asistentes" data-role="tagsinput" value="{{$asistentes}}"/>
                          </div>
@@ -67,6 +67,7 @@
                 @else
                 <div class="hidden" id="div_invitados">
                 @endif
+                    <h1 class="text-center">Nivel</h1>
                     <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                         <div class="checkbox">
                             <label class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
@@ -75,7 +76,7 @@
                             @else
                                 <input type="checkbox" value="Nivel medio superior" name="nivel1">
                             @endif
-                                Nivel medio superior
+                                Medio superior
                             </label>
                             <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
                                 <input type="text" name="medio_superior" data-role="tagsinput" value="{{$inv_ms}}"/>

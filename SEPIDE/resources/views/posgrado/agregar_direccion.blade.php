@@ -110,10 +110,11 @@
                          </div>
                      </div>
                 </div>
+
                 <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                      <label for="alcance" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Estátus:</label>
                      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                         <select name="estatus" class="form-control" id="elem_reg">
+                         <select name="estatus" class="form-control" id="elem_dir">
                                   <option value="">&nbsp;</option>
                                   <option value="En desarrollo">En desarrollo</option>
                                   <option value="Terminada">Terminada</option>
@@ -121,12 +122,23 @@
                      </div>
                  </div>
 
-                 <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                     <label for="fecha" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha límite:</label>
-                     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                         <input type="text" name="fecha_limite" class="fecha form-control datepicker disabled" placeholder="Fecha límite">
-                     </div>
-                 </div>
+                <div class="hidden" id="div_dir_lim">
+                     <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                         <label for="fecha" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha límite:</label>
+                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                             <input type="text" name="fecha_limite" class="fecha form-control datepicker disabled" placeholder="Fecha límite">
+                         </div>
+                     </div>
+                </div>
+
+                <div class="hidden" id="div_dir_ter">
+                    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                         <label for="fecha" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha término:</label>
+                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                             <input type="text" name="fecha_termino" class="fecha form-control datepicker disabled" placeholder="Fecha término">
+                         </div>
+                     </div>
+                </div>
 
                  <div class="form-group">
                      <div class="col-xs-10">

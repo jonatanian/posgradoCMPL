@@ -130,3 +130,42 @@ $("#elem_direccion").change(function(){
     $("#div_lgac_ins").addClass("hidden");
   }
 });
+
+$("#elem_soft").change(function(){
+  if($(this).val() == "ap"){
+    $("#div_fecha_ap").removeClass("hidden");
+    $("#div_fecha_pr").addClass("hidden");
+  }
+  else if($(this).val() == "pr"){
+    $("#div_fecha_pr").removeClass("hidden");
+    $("#div_fecha_ap").addClass("hidden");
+  }
+  else{
+    $("#div_fecha_pr").addClass("hidden");
+    $("#div_fecha_ap").addClass("hidden");
+  }
+});
+
+$("#elem_alumno").change(function(){
+  if($(this).val() == "De estudiante"){
+    $("#div_alumno").removeClass("hidden");
+  }
+  else{
+    $("#div_invitados").addClass("hidden");
+  }
+});
+
+$("#elem_dir").change(function(){
+  if($(this).val() == "En desarrollo"){
+    $("#div_dir_lim").removeClass("hidden");
+    $("#div_dir_ter").addClass("hidden");
+  }
+  else if($(this).val() == "Terminada"){
+    $("#div_dir_ter").removeClass("hidden");
+    $("#div_dir_lim").addClass("hidden");
+  }
+  else{
+    $("#div_dir_lim").addClass("hidden");
+    $("#div_dir_ter").addClass("hidden");
+  }
+});

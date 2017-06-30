@@ -86,12 +86,31 @@
                      </div>
                  </div>
 
-                 <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                     <label for="fecha" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha límite:</label>
-                     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                         <p>{{$direccion->fecha_limite}}</p>
-                     </div>
-                 </div>
+                @if($direccion->estatus == "En desarrollo")
+                <div class="" id="div_dir_lim">
+                @else
+                <div class="hidden" id="div_dir_lim">
+                @endif
+                     <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                         <label for="fecha" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha límite:</label>
+                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                             <p>{{$direccion->fecha_limite}}</p>
+                         </div>
+                     </div>
+                </div>
+
+                @if($direccion->estatus == "Terminada")
+                <div class="" id="div_dir_ter">
+                @else
+                <div class="hidden" id="div_dir_ter">
+                @endif
+                    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                         <label for="fecha" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha término:</label>
+                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                             <p>{{$direccion->fecha_termino}}</p>
+                         </div>
+                     </div>
+                </div>
                 
             </form>
             

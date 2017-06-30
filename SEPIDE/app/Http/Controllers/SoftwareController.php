@@ -63,6 +63,8 @@ class SoftwareController extends Controller
             $software->estatus = $data['estatus'];
             if(!empty($data['fecha_aprobacion']))
                 $software->fecha_aprobacion = $data['fecha_aprobacion'];
+            if(!empty($data['fecha_presentacion']))
+                $software->fecha_presentacion = $data['fecha_presentacion'];
             $software->area_aplicacion = $data['area_aplicacion'];
 
             $invest = Investigador::where('user_id',Auth::id())->first();
@@ -94,6 +96,8 @@ class SoftwareController extends Controller
             $software->estatus = $data['estatus'];
             if(!empty($data['fecha_aprobacion']))
                 $software->fecha_aprobacion = $data['fecha_aprobacion'];
+            if(!empty($data['fecha_presentacion']))
+                $software->fecha_presentacion = $data['fecha_presentacion'];
             $software->area_aplicacion = $data['area_aplicacion'];
             $software->save();
             return redirect('/software')->with('success','El software se modificó de forma exitosa');

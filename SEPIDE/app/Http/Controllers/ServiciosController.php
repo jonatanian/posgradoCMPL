@@ -73,7 +73,7 @@ class ServiciosController extends Controller
             $servicio->registro = $data['registro'];
             if(!empty($data['asistentes']))
                 $servicio->asistentes = $data['asistentes'];
-            $servicio->costo = $data['costo'];
+            $servicio->costo = tofloat($data['costo']);
 
             $invest = Investigador::where('user_id',Auth::id())->first();
             $servicio->creador_id = $invest->id;
@@ -139,7 +139,7 @@ class ServiciosController extends Controller
                 $servicio->otro_registro = $data['otro_registro'];
             $servicio->registro = $data['registro'];
             $servicio->asistentes = $data['asistentes'];
-            $servicio->costo = $data['costo'];
+            $servicio->costo = tofloat($data['costo']);
 
             Investigador_indicador::where('indicador_id',$id)->where('indicador',10)->forceDelete();
             if(isset($data['investigadores'])){
@@ -191,4 +191,20 @@ class ServiciosController extends Controller
             return redirect('/servicios')->with('error','Error, vuelva a intentar');
         }
     }
+}
+
+function tofloat($num) {
+    $dotPos = strrpos($num, '.');
+    $commaPos = strrpos($num, ',');
+    $sep = (($dotPos > $commaPos) && $dotPos) ? $dotPos : 
+        ((($commaPos > $dotPos) && $commaPos) ? $commaPos : false);
+   
+    if (!$sep) {
+        return floatval(preg_replace("/[^0-9]/", "", $num));
+    } 
+
+    return floatval(
+        preg_replace("/[^0-9]/", "", substr($num, 0, $sep)) . '.' .
+        preg_replace("/[^0-9]/", "", substr($num, $sep+1, strlen($num)))
+    );
 }

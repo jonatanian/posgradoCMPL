@@ -22,6 +22,7 @@ CREATE TABLE [dbo].[Direccion](
 	[lgac] [varchar](50) NULL,
 	[estatus] [varchar](50) NULL,
 	[fecha_limite] [date] NULL,
+	[fecha_termino] [date] NULL,
 	[creador_id] [int] NULL,
 	[created_at] [datetime] NULL,
 	[updated_at] [datetime] NULL

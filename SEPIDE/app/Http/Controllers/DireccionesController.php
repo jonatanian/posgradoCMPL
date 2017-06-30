@@ -75,6 +75,8 @@ class DireccionesController extends Controller
             $direccion->estatus = $data['estatus'];
             if(!empty($data['fecha_limite']))
                 $direccion->fecha_limite = $data['fecha_limite'];
+            if(!empty($data['fecha_termino']))
+                $direccion->fecha_termino = $data['fecha_termino'];
 
             $invest = Investigador::where('user_id',Auth::id())->first();
             $direccion->creador_id = $invest->id;
@@ -128,6 +130,8 @@ class DireccionesController extends Controller
             $direccion->estatus = $data['estatus'];
             if(!empty($data['fecha_limite']))
                 $direccion->fecha_limite = $data['fecha_limite'];
+            if(!empty($data['fecha_termino']))
+                $direccion->fecha_termino = $data['fecha_termino'];
             $direccion->save();
 
             Investigador_indicador::where('indicador_id',$id)->where('indicador',14)->forceDelete();

@@ -19,6 +19,7 @@ CREATE TABLE [dbo].[Software](
 	[registro] [varchar](50) NULL,
 	[estatus] [varchar](10) NULL,
 	[fecha_aprobacion] [date] NULL,
+	[fecha_presentacion] [date] NULL,
 	[area_aplicacion] [varchar](150) NULL,
 	[creador_id] [int] NULL,
 	[updated_at] [datetime] NULL,

@@ -35,7 +35,13 @@
                 @foreach($movilidad as $mov)
                     <tr>
                         <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">{{$mov->tipo}}</td>
-                        <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">{{$mov->alumno}}</td>
+                        <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        @if($mov->tipo == "De estudiante")
+                            {{$mov->alumno}}
+                        @else
+                            NA
+                        @endif
+                        </td>
                         <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">{{$mov->nombre_programa}}</td>
                         <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                             Fecha inicio: {{$mov->fecha_inicio}}<br>

@@ -54,10 +54,23 @@
                  </div>
 
                 <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                     <label for="fecha" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha de aprobación:</label>
-                     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                         {{$software->fecha_aprobacion}}
-                     </div>
+                    @if($software->estatus == "ap") 
+                        <label for="fecha" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha de aprobación:</label>
+                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                             {{$software->fecha_aprobacion}}
+                         </div>
+                    @elseif($software->estatus == "pr")
+                        <label for="fecha" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha de presentación:</label>
+                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                             {{$software->fecha_presentacion}}
+                         </div>
+                    @else
+                        <label for="fecha" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha:</label>
+                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                             Sin fecha
+                         </div>
+                    @endif
+                     
                  </div>
 
                 <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">

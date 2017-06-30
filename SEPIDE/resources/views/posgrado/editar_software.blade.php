@@ -41,7 +41,7 @@
                 <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                      <label for="alcance" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Estátus:</label>
                      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                         <select name="estatus" class="form-control">
+                         <select name="estatus" class="form-control" id="elem_soft">
                             @if($software->estatus == "pr")
                                   <option value="">&nbsp;</option>
                                   <option value="pr" selected>Presentado</option>
@@ -59,13 +59,31 @@
                             </select>
                      </div>
                  </div>
+                @if($software->estatus == "ap")
+                <div id="div_fecha_ap" class="">
+                @else
+                <div id="div_fecha_ap" class="hidden">
+                @endif
+                    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                         <label for="fecha" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha de aprobación:</label>
+                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                             <input type="text" name="fecha_aprobacion" class="fecha form-control datepicker disabled" placeholder="Fecha de aprobación" value="{{$software->fecha_aprobacion}}">
+                         </div>
+                     </div>
+                </div>
 
-                <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                     <label for="fecha" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha de aprobación:</label>
-                     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                         <input type="text" name="fecha_aprobacion" class="fecha form-control datepicker disabled" placeholder="Fecha de aprobación" value="{{$software->fecha_aprobacion}}">
-                     </div>
-                 </div>
+                @if($software->estatus == "pr")
+                <div id="div_fecha_pr" class="">
+                @else
+                <div id="div_fecha_pr" class="hidden">
+                @endif
+                    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                         <label for="fecha" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha de presentación:</label>
+                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                             <input type="text" name="fecha_presentacion" class="fecha form-control datepicker disabled" placeholder="Fecha de presentación" value="{{$software->fecha_presentacion}}">
+                         </div>
+                     </div>
+                </div>
 
                 <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                      <label for="participacion" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Área de aplicación:</label>

@@ -191,7 +191,7 @@
                 <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                      <label for="alcance" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Estátus:</label>
                      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                         <select name="estatus" class="form-control" id="elem_reg">
+                         <select name="estatus" class="form-control" id="elem_dir">
                             @if($direccion->estatus == "En desarrollo")
                                   <option value="">&nbsp;</option>
                                   <option value="En desarrollo" selected>En desarrollo</option>
@@ -209,12 +209,31 @@
                      </div>
                  </div>
 
-                 <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                     <label for="fecha" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha límite:</label>
-                     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                         <input type="text" name="fecha_limite" class="fecha form-control datepicker disabled" placeholder="Fecha límite" value="{{$direccion->fecha_limite}}">
-                     </div>
-                 </div>
+                @if($direccion->estatus == "En desarrollo")
+                <div class="" id="div_dir_lim">
+                @else
+                <div class="hidden" id="div_dir_lim">
+                @endif
+                     <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                         <label for="fecha" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha límite:</label>
+                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                             <input type="text" name="fecha_limite" class="fecha form-control datepicker disabled" placeholder="Fecha límite" value="{{$direccion->fecha_limite}}">
+                         </div>
+                     </div>
+                </div>
+
+                @if($direccion->estatus == "Terminada")
+                <div class="" id="div_dir_ter">
+                @else
+                <div class="hidden" id="div_dir_ter">
+                @endif
+                    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                         <label for="fecha" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha término:</label>
+                         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                             <input type="text" name="fecha_termino" class="fecha form-control datepicker disabled" placeholder="Fecha término" value="{{$direccion->fecha_termino}}">
+                         </div>
+                     </div>
+                </div>
 
                  <div class="form-group">
                      <div class="col-xs-10">

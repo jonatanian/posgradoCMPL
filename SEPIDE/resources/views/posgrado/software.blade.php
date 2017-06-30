@@ -28,7 +28,7 @@
                     <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha de desarrollo</th>
                     <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">Registro INDAUTOR</th>
                     <th class="col-xs-1 col-sm-1 col-md-1 col-lg-1">Estátus</th>
-                    <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha de aprobacion</th>
+                    <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">Fecha</th>
                     <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">Área de aplicación</th>
                     <th class="col-xs-2 col-sm-2 col-md-2 col-lg-1">Acciones</th>
                 </tr>
@@ -47,7 +47,15 @@
                             Presentado
                         @endif
                         </td>
-                        <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">{{$soft->fecha_aprobacion}}</td>
+                        <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        @if($soft->estatus == "ap")
+                            {{$soft->fecha_aprobacion}}
+                        @elseif($soft->estatus == "pr")
+                            {{$soft->fecha_presentacion}}
+                        @else
+                            -
+                        @endif
+                        </td>
                         <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">{{$soft->area_aplicacion}}</td>
                         <td class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
                             <div class="btn-group">

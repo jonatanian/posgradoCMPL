@@ -13,7 +13,7 @@
                  <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                      <label for="alcance" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Tipo:</label>
                      <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                         <select name="tipo" class="form-control">
+                         <select name="tipo" class="form-control" id="elem_alumno">
                                   <option value="">&nbsp;</option>
                                   <option value="Individual">Individual</option>
                                   <option value="De estudiante">De estudiante</option>
@@ -21,12 +21,14 @@
                      </div>
                  </div>
 
-                 <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                     <label for="nombrePrograma" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Nombre del alumno:</label>
-                        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                         <input type="text" name="alumno" class="form-control disabled" placeholder="Alumno">
-                     </div>
-                 </div>
+                <div class="hidden" id="div_alumno">
+                    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                         <label for="nombrePrograma" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Nombre del alumno:</label>
+                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                             <input type="text" name="alumno" class="form-control disabled" placeholder="Alumno">
+                         </div>
+                     </div>
+                </div>
 
                  <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
                      <label for="nombrePrograma" class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">Nombre del programa:</label>

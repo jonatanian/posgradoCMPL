@@ -30,7 +30,7 @@
                     <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">Título</th>
                     <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">LGAC</th>
                     <th class="col-xs-1 col-sm-1 col-md-1 col-lg-1">Estátus</th>
-                    <th class="col-xs-1 col-sm-1 col-md-1 col-lg-1">Fecha límite para obtener grado</th>
+                    <th class="col-xs-1 col-sm-1 col-md-1 col-lg-1">Fecha</th>
                     <th class="col-xs-2 col-sm-2 col-md-2 col-lg-1">Acciones</th>
                 </tr>
                 @foreach($direcciones as $direccion)
@@ -42,7 +42,13 @@
                         <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">{{$direccion->lgac}}</td>
                         <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">{{$direccion->estatus}}</td>
                         <td class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-                        {{$direccion->fecha_limite}}
+                        @if($direccion->estatus == "En desarrollo")
+                            {{$direccion->fecha_limite}}
+                        @elseif($direccion->estatus == "Terminada")
+                            {{$direccion->fecha_termino}}
+                        @else
+                            -
+                        @endif
                         </td>
                         <td class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
                             <div class="btn-group">
